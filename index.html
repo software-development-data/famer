@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nông Dân Thời Loạn - Famer RPG</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌾</text></svg>">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game.css">
+    <link rel="stylesheet" href="css/modals.css">
+</head>
+<body>
+    <div id="app-root">
+        <div id="game-container">
+            <!-- ================= TITLE SCREEN ================= -->
+            <div id="screen-title">
+                <div class="title-top-bar">
+                    <button class="btn-circle-icon" id="btn-sound-toggle" title="Âm thanh">🔊</button>
+                    <button class="btn-circle-icon" id="btn-settings-title" title="Cài đặt">⚙️</button>
+                </div>
+
+                <div class="title-center">
+                    <img src="assets/images/title_logo.png" alt="Nông Dân Thời Loạn" class="title-logo-img">
+                </div>
+
+                <div class="title-button-group">
+                    <button class="btn-gold-play" id="btn-play">Vào Game</button>
+                    <button class="btn-wood-menu" id="btn-title-account">Tài Khoản</button>
+                    <button class="btn-wood-menu" id="btn-title-events">Sự Kiện</button>
+                </div>
+            </div>
+
+            <!-- ================= IN-GAME VIEWPORT ================= -->
+            <div id="screen-game" class="hidden" style="width: 100%; height: 100%; position: relative;">
+                <canvas id="game-canvas"></canvas>
+
+                <!-- ================= HUD OVERLAY ================= -->
+                <div id="hud-overlay">
+                    <!-- Top HUD -->
+                    <div class="hud-top-bar">
+                        <!-- Player Box -->
+                        <div class="hud-player-box" id="hud-avatar-box" title="Xem Thông Tin Nhân Vật">
+                            <div class="hud-avatar-wrapper">
+                                <img src="assets/images/avatar_farmer.png" alt="Nông Dân" id="hud-player-avatar">
+                                <span class="hud-level-badge" id="hud-player-level">Lv.18</span>
+                            </div>
+                            <div class="hud-player-bars">
+                                <div class="hud-player-name" id="hud-player-name">Nông Dân 1090</div>
+                                <div class="hud-bar">
+                                    <div class="hud-bar-fill hp-fill" id="hud-hp-fill" style="width: 100%;"></div>
+                                    <span class="hud-bar-text" id="hud-hp-text">2.840 / 2.840</span>
+                                </div>
+                                <div class="hud-bar">
+                                    <div class="hud-bar-fill energy-fill" id="hud-energy-fill" style="width: 100%;"></div>
+                                    <span class="hud-bar-text" id="hud-energy-text">120 / 120</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Currency -->
+                        <div class="hud-currency-container">
+                            <div class="currency-pill">
+                                <span class="currency-icon">🪙</span>
+                                <span class="currency-val" id="hud-gold-val">328.450</span>
+                                <button class="btn-currency-add" id="btn-add-gold">+</button>
+                            </div>
+                            <div class="currency-pill">
+                                <span class="currency-icon">💎</span>
+                                <span class="currency-val" id="hud-diamonds-val">12.680</span>
+                                <button class="btn-currency-add" id="btn-add-diamonds">+</button>
+                            </div>
+                            <button class="btn-circle-icon" id="btn-hud-menu" style="width: 38px; height: 38px; font-size: 16px;">⚙️</button>
+                        </div>
+
+                        <!-- Quick Features -->
+                        <div class="hud-quick-features">
+                            <button class="hud-feature-btn" id="hud-btn-events">
+                                <span class="f-icon">🎁</span>
+                                <span>Sự Kiện</span>
+                            </button>
+                            <button class="hud-feature-btn" id="hud-btn-checkin">
+                                <span class="f-icon">🎀</span>
+                                <span>Phúc Lợi</span>
+                            </button>
+                            <button class="hud-feature-btn" id="hud-btn-shop">
+                                <span class="f-icon">🏪</span>
+                                <span>Cửa Hàng</span>
+                            </button>
+                            <button class="hud-feature-btn" id="hud-btn-quests">
+                                <span class="f-icon">📜</span>
+                                <span>Nhiệm Vụ</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Controls -->
+                    <div class="hud-bottom-bar">
+                        <!-- Virtual Joystick -->
+                        <div class="joystick-container">
+                            <div class="joystick-base" id="joystick-base">
+                                <div class="joystick-thumb" id="joystick-thumb"></div>
+                            </div>
+                        </div>
+
+                        <!-- Interaction prompt -->
+                        <button id="hud-interact-btn" class="hidden">[E] Trồng Lúa</button>
+
+                        <!-- Combat Action Buttons -->
+                        <div class="combat-actions-cluster">
+                            <button class="btn-attack-primary" id="btn-action-attack" title="Tấn công [Space/J]">⚔️</button>
+                            <button class="btn-skill-sub skill-pos-1" id="btn-skill-shoot" title="Cung Tiễn [K]">🏹</button>
+                            <button class="btn-skill-sub skill-pos-2" id="btn-skill-trap" title="Bẫy [L]">🪤</button>
+                            <button class="btn-skill-sub skill-pos-3" id="btn-skill-sprint" title="Tăng Tốc [U/Shift]">⚡</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= MODALS & POPUPS ================= -->
+
+            <!-- 1. LOGIN MODAL -->
+            <div id="modal-login" class="modal-overlay hidden">
+                <div class="wood-board-frame" style="width: 380px;">
+                    <div class="board-header">
+                        <div class="board-title">🍃 Đăng Nhập</div>
+                        <button class="btn-close">✖</button>
+                    </div>
+                    <div class="board-content">
+                        <form id="form-login">
+                            <div class="form-group">
+                                <label>Tài khoản</label>
+                                <div class="input-with-icon">
+                                    <span>👤</span>
+                                    <input type="text" id="login-username" value="NongDanPro" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Mật khẩu</label>
+                                <div class="input-with-icon">
+                                    <span>🔒</span>
+                                    <input type="password" id="login-password" value="******" required>
+                                </div>
+                            </div>
+                            <div class="form-row-remember">
+                                <label><input type="checkbox" checked> Nhớ tài khoản</label>
+                                <a href="#" class="form-link" id="link-forgot-pw">Quên mật khẩu?</a>
+                            </div>
+                            <button type="submit" class="btn-green-glossy">Đăng Nhập</button>
+                        </form>
+                        <div style="text-align: center; margin-top: 14px; font-size: 13px;">
+                            Chưa có tài khoản? <a href="#" class="form-link" id="link-to-register">Đăng ký ngay</a>
+                        </div>
+                        <div class="social-login-row">
+                            <div class="social-btn" title="Đăng nhập Google">🌐</div>
+                            <div class="social-btn" title="Đăng nhập Facebook">📘</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. REGISTER MODAL -->
+            <div id="modal-register" class="modal-overlay hidden">
+                <div class="wood-board-frame" style="width: 420px;">
+                    <div class="board-header">
+                        <div class="board-title">🍃 Đăng Ký</div>
+                        <button class="btn-close">✖</button>
+                    </div>
+                    <div class="board-content">
+                        <form id="form-register">
+                            <div class="form-group">
+                                <label>Tên tài khoản</label>
+                                <div class="input-with-icon">
+                                    <span>👤</span>
+                                    <input type="text" id="reg-username" placeholder="Nhập tên tài khoản" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Mật khẩu</label>
+                                <div class="input-with-icon">
+                                    <span>🔒</span>
+                                    <input type="password" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Xác nhận mật khẩu</label>
+                                <div class="input-with-icon">
+                                    <span>🔒</span>
+                                    <input type="password" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Email (tùy chọn)</label>
+                                <div class="input-with-icon">
+                                    <span>✉️</span>
+                                    <input type="email" placeholder="example@email.com">
+                                </div>
+                            </div>
+                            <div class="form-row-remember">
+                                <label><input type="checkbox" checked required> Tôi đồng ý với Điều khoản & Chính sách</label>
+                            </div>
+                            <button type="submit" class="btn-green-glossy">Đăng Ký</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. FORGOT PASSWORD MODAL -->
+            <div id="modal-forgot" class="modal-overlay hidden">
+                <div class="wood-board-frame" style="width: 400px;">
+                    <div class="board-header">
+                        <div class="board-title">🏮 Quên Mật Khẩu</div>
+                        <button class="btn-close">✖</button>
+                    </div>
+                    <div class="board-content">
+                        <p style="font-size: 13px; color: #78350f; margin-bottom: 14px;">
+                            Nhập email đã đăng ký để nhận liên kết đặt lại mật khẩu.
+                        </p>
+                        <form id="form-forgot">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <div class="input-with-icon">
+                                    <span>✉️</span>
+                                    <input type="email" placeholder="Nhập email..." required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-green-glossy">Gửi Liên Kết</button>
+                        </form>
+                        <div style="text-align: center; margin-top: 14px;">
+                            <a href="#" class="form-link" id="link-back-login">← Quay lại Đăng Nhập</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. CHARACTER CREATION MODAL -->
+            <div id="modal-create-char" class="modal-overlay hidden">
+                <div class="wood-board-frame create-char-container">
+                    <div class="board-header">
+                        <div class="board-title">🌾 Tạo Nhân Vật</div>
+                        <button class="btn-close">✖</button>
+                    </div>
+                    <div class="board-content">
+                        <div class="create-char-body">
+                            <div class="create-char-left">
+                                <label style="font-size: 13px; font-weight: 700; color: #78350f;">Chọn Giới Tính</label>
+                                <div class="gender-select-row">
+                                    <button class="btn-gender male active" id="btn-gender-male">♂ Nam</button>
+                                    <button class="btn-gender female" id="btn-gender-female">♀ Nữ</button>
+                                </div>
+
+                                <label style="font-size: 13px; font-weight: 700; color: #78350f; margin-top: 8px;">Chọn Dáng</label>
+                                <div class="avatar-styles-list">
+                                    <div class="avatar-choice selected">🌾</div>
+                                    <div class="avatar-choice">🥋</div>
+                                    <div class="avatar-choice">🏹</div>
+                                </div>
+
+                                <div class="form-group" style="margin-top: 8px;">
+                                    <label>Nhập Tên Nhân Vật</label>
+                                    <div class="input-with-icon">
+                                        <span>✍️</span>
+                                        <input type="text" id="create-char-name" value="Nông Dân 1090">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="char-pedestal-preview">
+                                <div>👨‍🌾</div>
+                                <span style="font-size: 12px; font-weight: 800; color: #78350f; margin-top: 10px;">Hiệp Khách</span>
+                            </div>
+                        </div>
+
+                        <div class="char-notice-banner">
+                            ℹ Mở chọn hệ ở Lv.10 (Nông Dân, Cung Thủ, Đao Khách)
+                        </div>
+
+                        <button class="btn-gold-emboss" id="btn-submit-create-char" style="width: 100%; margin-top: 14px;">Tạo Nhân Vật</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. CHARACTER PROFILE MODAL -->
+            <div id="modal-char-info" class="modal-overlay hidden">
+                <div class="wood-board-frame char-profile-layout">
+                    <div class="board-header" style="width: 100%; position: absolute; top: 0; left: 0; right: 0;">
+                        <div class="board-title">📜 Thông Tin Nhân Vật</div>
+                        <button class="btn-close">✖</button>
+                    </div>
+                    <div class="board-content" style="margin-top: 50px; display: flex; gap: 14px; width: 100%;">
+                        <!-- Navigation Tabs -->
+                        <div class="char-nav-tabs">
+                            <div class="char-info-tab active" data-tab="nhan_vat">Nhân Vật</div>
+                            <div class="char-info-tab" data-tab="hanh_trang">Hành Trang</div>
+                            <div class="char-info-tab" data-tab="ky_nang">Kỹ Năng</div>
+                            <div class="char-info-tab" data-tab="de_tu">Đệ Tử</div>
+                            <div class="char-info-tab" data-tab="pet">Pet</div>
+                            <div class="char-info-tab" data-tab="danh_hieu">Danh Hiệu</div>
+                        </div>
+
+                        <!-- Center Equipment Doll -->
+                        <div class="char-doll-panel">
+                            <div class="equip-slots-grid" id="char-equip-slots"></div>
+                        </div>
+
+                        <!-- Right Stats -->
+                        <div class="char-stats-panel">
+                            <div style="font-size: 15px; font-weight: 800; color: #78350f;" id="char-info-name">Nông Dân 1090</div>
+                            <div style="font-size: 12px; color: #64748b;">Hệ: <b id="char-info-class">Nông Dân</b> | Cấp: <b id="char-info-level">18</b></div>
+                            <div class="stat-combat-power">Lực chiến: <span id="char-info-power">24.680</span></div>
+
+                            <div class="stat-row"><span>❤️ HP</span><b id="char-info-hp">2.840</b></div>
+                            <div class="stat-row"><span>⚡ Thể Lực</span><b id="char-info-energy">120</b></div>
+                            <div class="stat-row"><span>⚔️ Công</span><b id="char-info-atk">1.920</b></div>
+                            <div class="stat-row"><span>🛡️ Thủ</span><b id="char-info-def">860</b></div>
+                            <div class="stat-row"><span>👟 Tốc độ</span><b id="char-info-spd">320</b></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. INVENTORY MODAL -->
+            <div id="modal-inventory" class="modal-overlay hidden">
+                <div class="wood-board-frame inventory-layout">
+                    <div class="board-header">
+                        <div class="board-title">🎒 Hành Trang</div>
+                        <button class="btn-close">✖</button>
+                    </div>
+                    <div class="board-content">
+                        <!-- Categories -->
+                        <div class="category-tabs-row">
+                            <div class="inv-cat-tab active" data-cat="Tất Cả">Tất Cả</div>
+                            <div class="inv-cat-tab" data-cat="Trang Bị">Trang Bị</div>
+                            <div class="inv-cat-tab" data-cat="Vật Phẩm">Vật Phẩm</div>
+                            <div class="inv-cat-tab" data-cat="Ngọc">Ngọc</div>
+                            <div class="inv-cat-tab" data-cat="Khác">Khác</div>
+                        </div>
+
+                        <!-- Grid -->
+                        <div class="inventory-grid-container" id="inventory-grid"></div>
+
+                        <!-- Selected Item Popover -->
+                        <div class="item-detail-popover hidden" id="inv-item-detail">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="font-size: 32px;" id="detail-item-icon">🌾</span>
+                                <div>
+                                    <div style="font-weight: 800; font-size: 14px; color: #78350f;" id="detail-item-name">Tên vật phẩm</div>
+                                    <div style="font-size: 11px; color: #64748b;" id="detail-item-desc">Mô tả chi tiết</div>
+                                </div>
+                            </div>
+                            <div class="detail-actions-row">
+                                <button class="btn-gold-emboss" id="btn-detail-use" style="flex: 1; padding: 6px;">Sử Dụng</button>
+                                <button class="btn-wood-menu" id="btn-detail-sell" style="flex: 1; height: 36px; font-size: 13px;">Bán</button>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Controls -->
+                        <div class="inv-bottom-bar">
+                            <div style="font-size: 13px; font-weight: 800; color: #78350f;" id="inv-capacity-label">Ô sử dụng: 28/100</div>
+                            <div style="display: flex; gap: 10px;">
+                                <button class="btn-currency-add" id="btn-inv-expand" title="Mở rộng">+ </button>
+                                <button class="btn-gold-emboss" id="btn-inv-sort" style="padding: 6px 14px; font-size: 13px;">Sắp xếp</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. SKILLS MODAL -->
+            <div id="modal-skills" class="modal-overlay hidden">
+                <div class="wood-board-frame skills-layout">
+                    <div class="board-header" style="position: absolute; top: 0; left: 0; right: 0;">
+                        <div class="board-title">✨ Kỹ Năng Võ Thuật</div>
+                        <button class="btn-close">✖</button>
+                    </div>
+                    <div class="board-content" style="margin-top: 50px; display: flex; gap: 16px; width: 100%;">
+                        <div class="skills-list-col" id="skills-list-container"></div>
+                        <div class="skill-detail-col">
+                            <div class="skill-large-badge" id="skill-detail-icon">🏹</div>
+                            <div style="font-size: 18px; font-weight: 900; color: #78350f;" id="skill-detail-name">Cung Tiễn</div>
+                            <div style="font-size: 13px; font-weight: 700; color: #16a34a;" id="skill-detail-level">Cấp: 5</div>
+                            <p style="font-size: 12px; color: #475569;" id="skill-detail-desc">Tấn công mục tiêu bằng mũi tên gây sát thương diện rộng.</p>
+                            <div style="font-size: 13px; font-weight: 700; color: #dc2626;" id="skill-detail-dmg">Sát thương: 180%</div>
+                            <div style="font-size: 12px; color: #64748b;" id="skill-detail-cd">Hồi chiêu: 5s</div>
+                            <div style="font-size: 13px; font-weight: 800; color: #ca8a04; margin-top: 6px;" id="skill-upgrade-cost">Chi phí: 12.500 Vàng</div>
+                            <button class="btn-gold-emboss" id="btn-upgrade-skill" style="width: 100%; margin-top: 8px;">Nâng Cấp</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. DISCIPLES MODAL -->
+            <div id="modal-disciples" class="modal-overlay hidden">
+                <div class="wood-board-frame" style="width: 620px;">
+                    <div class="board-header">
+                        <div class="board-title">🥋 Đệ Tử Đồng Hành</div>
+                        <button class="btn-close">✖</button>
+                    </div>
+                    <div class="board-content" style="display: flex; gap: 16px;">
+                        <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;" id="disciple-list-items"></div>
+                        <div style="flex: 1.4; background: #fffbeb; border: 2px solid #ca8a04; border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; align-items: center;">
+                            <div style="font-size: 48px;">🥋</div>
+                            <div style="font-size: 16px; font-weight: 900; color: #78350f;" id="disciple-detail-name">Tiểu Long Nữ</div>
+                            <div style="font-size: 13px; color: #e11d48;">⭐⭐⭐⭐</div>
+                            <div style="width: 100%; font-size: 13px; font-weight: 700;">
+                                <div class="stat-row"><span id="disciple-detail-hp">HP: 3.200</span></div>
+                                <div class="stat-row"><span id="disciple-detail-atk">Công: 820</span></div>
+                                <div class="stat-row"><span id="disciple-detail-def">Thủ: 420</span></div>
+                                <div class="stat-row"><span id="disciple-detail-spd">Tốc độ: 280</span></div>
+                            </div>
+                            <label style="font-size: 13px; font-weight: 800; color: #78350f; margin-top: 4px;">
+                                <input type="checkbox" id="chk-disciple-auto" checked> Tự đánh quái
+                            </label>
+                            <div style="display: flex; gap: 10px; width: 100%; margin-top: 8px;">
+                                <button class="btn-green-glossy" id="btn-disciple-follow" style="padding: 8px;">Đi Theo</button>
+                                <button class="btn-gold-emboss" id="btn-disciple-attack" style="padding: 8px; flex: 1;">Tấn Công</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. PET MODAL -->
+            <div id="modal-pets" class="modal-overlay hidden">
+                <div class="wood-board-frame" style="width: 580px;">
+                    <div class="board-header">
+                        <div class="board-title">🐹 Thú Cưng / Pet</div>
+                        <button class="btn-close">✖</button>
+                    </div>
+                    <div class="board-content" style="display: flex; gap: 16px;">
+                        <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;" id="pets-list-items"></div>
+                        <div style="flex: 1.4; background: #fffbeb; border: 2px solid #ca8a04; border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; align-items: center;">
+                            <div style="font-size: 48px;">🐹</div>
+                            <div style="font-size: 16px; font-weight: 900; color: #78350f;" id="pet-detail-name">Tiểu Chuột</div>
+                            <div style="font-size: 13px; font-weight: 700; color: #ca8a04;" id="pet-detail-level">Cấp: 10/100</div>
+                            <div style="width: 100%; font-size: 13px; font-weight: 700;">
+                                <div class="stat-row"><span>HP Cộng thêm:</span> <b style="color: #16a34a;" id="pet-detail-hp">+3.000</b></div>
+                                <div class="stat-row"><span>Công Cộng thêm:</span> <b style="color: #dc2626;" id="pet-detail-atk">+420</b></div>
+                                <div class="stat-row"><span>Thủ Cộng thêm:</span> <b style="color: #0284c7;" id="pet-detail-def">+180</b></div>
+                            </div>
+                            <div style="display: flex; gap: 10px; width: 100%; margin-top: 10px;">
+                                <button class="btn-gold-emboss" id="btn-upgrade-pet" style="flex: 1;">Nâng Cấp</button>
+                                <button class="btn-gold-emboss" id="btn-evolve-pet" style="flex: 1;">Tiến Hóa</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. DAILY CHECK-IN MODAL -->
+            <div id="modal-checkin" class="modal-overlay hidden">
+                <div class="wood-board-frame checkin-layout">
+                    <div class="board-header" style="position: absolute; top: 0; left: 0; right: 0;">
+                        <div class="board-title">🎁 Điểm Danh 7 Ngày Nhận Quà</div>
+                        <button class="btn-close">✖</button>
+                    </div>
+                    <div class="board-content" style="margin-top: 50px; display: flex; gap: 16px; width: 100%; align-items: center;">
+                        <div style="width: 130px; text-align: center;">
+                            <div style="font-size: 58px;">👩‍🌾</div>
+                            <div style="font-size: 13px; font-weight: 800; color: #78350f; margin-top: 6px;">Bé Thảo Nông Trại</div>
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column; gap: 12px;">
+                            <div class="checkin-grid" id="checkin-grid"></div>
+                            <button class="btn-gold-emboss" id="btn-claim-checkin" style="width: 100%;">Điểm Danh Ngay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11. DAILY QUESTS MODAL -->
+            <div id="modal-quests" class="modal-overlay hidden">
+                <div class="wood-board-frame quests-layout">
+                    <div class="board-header">
+                        <div class="board-title">📜 Nhiệm Vụ Hàng Ngày</div>
+                        <button class="btn-close">✖</button>
+                    </div>
+                    <div class="board-content">
+                        <div id="quests-list-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 12. EVENTS MODAL -->
+            <div id="modal-events" class="modal-overlay hidden">
+                <div class="wood-board-frame" style="width: 650px;">
+                    <div class="board-header">
+                        <div class="board-title">🎉 Sự Kiện Nông Dân</div>
+                        <button class="btn-close">✖</button>
+                    </div>
+                    <div class="board-content">
+                        <div class="category-tabs-row" style="margin-bottom: 12px;">
+                            <div class="event-tab active" data-tab="dac_biet">Sự Kiện Đặc Biệt</div>
+                            <div class="event-tab" data-tab="vong_quay">Vòng Quay May Mắn</div>
+                            <div class="event-tab" data-tab="dua_top">Đua Top</div>
+                            <div class="event-tab" data-tab="tich_luy">Tích Lũy</div>
+                        </div>
+                        <div id="events-tab-content"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 13. SHOP MODAL -->
+            <div id="modal-shop" class="modal-overlay hidden">
+                <div class="wood-board-frame shop-layout">
+                    <div class="board-header">
+                        <div class="board-title">🏪 Cửa Hàng Thần Nông</div>
+                        <button class="btn-close">✖</button>
+                    </div>
+                    <div class="board-content">
+                        <div class="category-tabs-row" style="margin-bottom: 12px;">
+                            <div class="shop-tab active" data-cat="Đặc Biệt">Đặc Biệt</div>
+                            <div class="shop-tab" data-cat="Vật Phẩm">Vật Phẩm</div>
+                            <div class="shop-tab" data-cat="Trang Bị">Trang Bị</div>
+                            <div class="shop-tab" data-cat="Ngọc">Ngọc</div>
+                        </div>
+                        <div class="shop-items-grid" id="shop-items-grid"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 14. SETTINGS MODAL -->
+            <div id="modal-settings" class="modal-overlay hidden">
+                <div class="wood-board-frame" style="width: 380px;">
+                    <div class="board-header">
+                        <div class="board-title">⚙️ Cài Đặt Trò Chơi</div>
+                        <button class="btn-close">✖</button>
+                    </div>
+                    <div class="board-content">
+                        <div class="form-group">
+                            <label>Âm thanh & Nhạc nền</label>
+                            <button class="btn-green-glossy" onclick="window.soundEngine?.toggleMute()">Bật / Tắt Âm Thanh</button>
+                        </div>
+                        <div class="form-group" style="margin-top: 14px;">
+                            <label>Dữ liệu trò chơi</label>
+                            <button class="btn-wood-menu" onclick="if(confirm('Khởi tạo lại toàn bộ dữ liệu?')){localStorage.clear();location.reload();}" style="width: 100%;">Đặt Lại Dữ Liệu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Main Module Script -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

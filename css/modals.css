@@ -1,0 +1,739 @@
+/* Bamboo & Wooden Dialog Frames, Modals, Forms, and Tab Controls */
+
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(12, 10, 9, 0.75);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    padding: 16px;
+    animation: modalFadeIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Base Wooden Board Frame with Leaf Accents */
+.wood-board-frame {
+    position: relative;
+    background: #fef3c7; /* Parchment cream */
+    border: 8px solid #78350f;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(120, 53, 15, 0.2);
+    color: #451a03;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Board Header */
+.board-header {
+    background: linear-gradient(180deg, #92400e 0%, #78350f 100%);
+    border-bottom: 4px solid #b45309;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.board-title {
+    font-size: 20px;
+    font-weight: 900;
+    color: #fef08a;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-close {
+    width: 32px;
+    height: 32px;
+    background: #dc2626;
+    border: 2px solid #fecaca;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    transition: transform 0.1s;
+}
+
+.btn-close:hover {
+    transform: scale(1.1);
+}
+
+.board-content {
+    padding: 18px;
+    overflow-y: auto;
+    max-height: 520px;
+}
+
+/* Green Glossy Pill Button (Đăng Nhập / Đăng Ký) */
+.btn-green-glossy {
+    background: linear-gradient(180deg, #4ade80 0%, #22c55e 50%, #16a34a 100%);
+    border: 2px solid #bbf7d0;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 10px 24px;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(22, 163, 74, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    transition: transform 0.1s;
+    width: 100%;
+}
+
+.btn-green-glossy:hover {
+    transform: scale(1.02);
+}
+
+/* Golden Embossed Button */
+.btn-gold-emboss {
+    background: linear-gradient(180deg, #fef08a 0%, #eab308 50%, #ca8a04 100%);
+    border: 2.5px solid #78350f;
+    border-radius: 22px;
+    color: #451a03;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+    transition: transform 0.1s;
+}
+
+.btn-gold-emboss:hover {
+    transform: scale(1.03);
+}
+
+/* Forms & Inputs */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #78350f;
+}
+
+.input-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fffbeb;
+    border: 2px solid #ca8a04;
+    border-radius: 12px;
+    padding: 8px 12px;
+}
+
+.input-with-icon input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    color: #451a03;
+}
+
+.form-row-remember {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.form-link {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.social-login-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 14px;
+}
+
+.social-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #ca8a04;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* ================= CHARACTER CREATION ================= */
+.create-char-container {
+    width: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.create-char-body {
+    display: flex;
+    gap: 20px;
+}
+
+.create-char-left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.gender-select-row {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-gender {
+    flex: 1;
+    padding: 8px;
+    border-radius: 12px;
+    border: 2px solid #cbd5e1;
+    background: #fff;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.btn-gender.male.active {
+    background: #0284c7;
+    color: #fff;
+    border-color: #38bdf8;
+}
+
+.btn-gender.female.active {
+    background: #ec4899;
+    color: #fff;
+    border-color: #f472b6;
+}
+
+.char-pedestal-preview {
+    width: 140px;
+    height: 160px;
+    background: radial-gradient(circle at bottom, #ca8a04 0%, #fef3c7 60%);
+    border: 2px dashed #ca8a04;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    position: relative;
+}
+
+.avatar-styles-list {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.avatar-choice {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border: 2px solid #ca8a04;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.avatar-choice.selected {
+    border-color: #22c55e;
+    background: #dcfce7;
+    transform: scale(1.08);
+}
+
+.char-notice-banner {
+    background: #fed7aa;
+    border: 1px solid #f97316;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #9a3412;
+    text-align: center;
+}
+
+/* ================= CHARACTER INFO MODAL ================= */
+.char-profile-layout {
+    width: 740px;
+    display: flex;
+    gap: 14px;
+}
+
+.char-nav-tabs {
+    width: 130px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.char-info-tab {
+    padding: 10px 14px;
+    background: #fef08a;
+    border: 2px solid #ca8a04;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 800;
+    color: #78350f;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.15s;
+}
+
+.char-info-tab.active {
+    background: #78350f;
+    color: #fef08a;
+    border-color: #fef08a;
+}
+
+.char-doll-panel {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(120, 53, 15, 0.08);
+    border-radius: 14px;
+    padding: 10px;
+}
+
+.equip-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.equip-slot-box {
+    height: 70px;
+    background: #fffbeb;
+    border: 2px solid #ca8a04;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.equip-slot-box.equipped {
+    border-color: #22c55e;
+    background: #f0fdf4;
+}
+
+.slot-icon { font-size: 24px; }
+.slot-label { font-size: 9px; font-weight: 700; color: #78350f; text-align: center; }
+
+.char-stats-panel {
+    flex: 1.1;
+    background: #fffbeb;
+    border: 2px solid #ca8a04;
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stat-combat-power {
+    background: linear-gradient(90deg, #ca8a04, #f59e0b);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 900;
+    text-align: center;
+    text-shadow: 0 1px 2px #000;
+    margin-bottom: 6px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 700;
+    border-bottom: 1px dashed #e2e8f0;
+    padding-bottom: 4px;
+}
+
+/* ================= INVENTORY MODAL ================= */
+.inventory-layout {
+    width: 660px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.category-tabs-row {
+    display: flex;
+    gap: 8px;
+}
+
+.inv-cat-tab, .shop-tab, .event-tab {
+    padding: 6px 14px;
+    background: #fef08a;
+    border: 2px solid #ca8a04;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #78350f;
+    cursor: pointer;
+}
+
+.inv-cat-tab.active, .shop-tab.active, .event-tab.active {
+    background: #78350f;
+    color: #fef08a;
+}
+
+.inventory-grid-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    max-height: 280px;
+    overflow-y: auto;
+    padding: 6px;
+    background: rgba(120, 53, 15, 0.08);
+    border-radius: 12px;
+}
+
+.inv-slot {
+    height: 60px;
+    background: #fffbeb;
+    border: 2px solid #ca8a04;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.inv-slot.filled {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.inv-slot.rare { border-color: #38bdf8; background: #f0f9ff; }
+.inv-slot.epic { border-color: #c084fc; background: #faf5ff; }
+.inv-slot.legendary { border-color: #f59e0b; background: #fffbeb; }
+
+.inv-item-icon { font-size: 26px; }
+.inv-item-count {
+    position: absolute;
+    bottom: 2px;
+    right: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #78350f;
+}
+
+.inv-bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 6px;
+}
+
+/* Item Detail Popover */
+.item-detail-popover {
+    background: #fff;
+    border: 2px solid #ca8a04;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.detail-actions-row {
+    display: flex;
+    gap: 10px;
+}
+
+/* ================= SKILLS MODAL ================= */
+.skills-layout {
+    width: 600px;
+    display: flex;
+    gap: 16px;
+}
+
+.skills-list-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.skill-list-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: #fffbeb;
+    border: 2px solid #ca8a04;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.skill-list-item.active {
+    background: #78350f;
+    color: #fef08a;
+    border-color: #fef08a;
+}
+
+.skill-detail-col {
+    flex: 1.4;
+    background: #fffbeb;
+    border: 2px solid #ca8a04;
+    border-radius: 14px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+}
+
+.skill-large-badge {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #22c55e, #15803d);
+    border: 3px solid #86efac;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+}
+
+/* ================= DAILY CHECK-IN ================= */
+.checkin-layout {
+    width: 680px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.checkin-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    flex: 1.8;
+}
+
+.checkin-day-card {
+    height: 90px;
+    background: #fffbeb;
+    border: 2px solid #ca8a04;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding: 6px;
+    position: relative;
+}
+
+.checkin-day-card.claimed {
+    background: #dcfce7;
+    border-color: #22c55e;
+}
+
+.checkin-day-card.today {
+    border-color: #eab308;
+    box-shadow: 0 0 10px rgba(234, 179, 8, 0.6);
+}
+
+.day-title { font-size: 11px; font-weight: 800; color: #78350f; }
+.day-icon { font-size: 24px; }
+.day-reward { font-size: 10px; font-weight: 700; color: #1e293b; text-align: center; }
+.day-badge-claimed {
+    position: absolute;
+    inset: 0;
+    background: rgba(34, 197, 94, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 900;
+    color: #15803d;
+}
+
+/* ================= DAILY QUESTS ================= */
+.quests-layout {
+    width: 580px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quest-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: #fffbeb;
+    border: 2px solid #ca8a04;
+    border-radius: 12px;
+}
+
+.quest-icon { font-size: 32px; }
+.quest-info { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.quest-title { font-size: 14px; font-weight: 800; color: #78350f; }
+
+.quest-progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e2e8f0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.quest-progress-fill {
+    height: 100%;
+    background: #22c55e;
+    transition: width 0.3s;
+}
+
+.quest-progress-text { font-size: 11px; font-weight: 700; color: #64748b; }
+
+.btn-quest-claim {
+    padding: 8px 16px;
+    background: #94a3b8;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: not-allowed;
+}
+
+.btn-quest-claim.active {
+    background: #22c55e;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(34, 197, 94, 0.4);
+}
+
+/* ================= LUCKY WHEEL ================= */
+.lucky-wheel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    padding: 10px;
+}
+
+.wheel-pointer {
+    font-size: 28px;
+    color: #dc2626;
+    margin-bottom: -15px;
+    z-index: 10;
+}
+
+.lucky-wheel {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 6px solid #78350f;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    background: #fde047;
+}
+
+.wheel-slice {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0% 0%;
+    transform: rotate(var(--r)) skewY(-30deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 800;
+    color: #451a03;
+    padding-left: 20px;
+}
+
+/* ================= SHOP MODAL ================= */
+.shop-layout {
+    width: 620px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.shop-items-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.shop-item-card {
+    background: #fffbeb;
+    border: 2px solid #ca8a04;
+    border-radius: 14px;
+    padding: 14px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+}
+
+.shop-item-icon { font-size: 38px; }
+.shop-item-title { font-size: 14px; font-weight: 800; color: #78350f; }
+.shop-item-desc { font-size: 11px; color: #64748b; min-height: 28px; }
+
+.btn-shop-buy {
+    width: 100%;
+    padding: 8px 12px;
+    background: #22c55e;
+    border: 1.5px solid #86efac;
+    border-radius: 16px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(34, 197, 94, 0.3);
+}

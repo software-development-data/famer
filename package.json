@@ -1,0 +1,21 @@
+{
+  "name": "nong-dan-thoi-loan",
+  "version": "1.0.0",
+  "description": "Game Nông Dân Thời Loạn (Famer RPG) - Game nhập vai nông trại kết hợp chiến đấu 2D phong cách Chibi Việt Nam",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  },
+  "keywords": [
+    "game",
+    "rpg",
+    "farming",
+    "chibi",
+    "html5-game",
+    "vietnam",
+    "nong-dan-thoi-loan"
+  ],
+  "author": "software-development-data",
+  "license": "MIT"
+}

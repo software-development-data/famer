@@ -1,0 +1,475 @@
+/* Game Viewport, Title Screen, and In-Game HUD Styling */
+
+#game-container {
+    width: 100%;
+    max-width: 1280px;
+    height: 100%;
+    max-height: 720px;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    image-rendering: auto;
+}
+
+/* ================= TITLE SCREEN ================= */
+#screen-title {
+    position: absolute;
+    inset: 0;
+    background: url('../assets/images/title_screen.png') no-repeat center center / cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    z-index: 100;
+}
+
+.title-top-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-circle-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #78350f, #451a03);
+    border: 3px solid #fde047;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.15s;
+}
+
+.btn-circle-icon:hover {
+    transform: scale(1.1);
+}
+
+.title-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: -30px;
+}
+
+.title-logo-img {
+    max-width: 480px;
+    width: 90%;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.7));
+    animation: floatLogo 3s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.title-button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Golden Embossed Button */
+.btn-gold-play {
+    width: 240px;
+    height: 56px;
+    background: linear-gradient(180deg, #fef08a 0%, #eab308 50%, #ca8a04 100%);
+    border: 3px solid #78350f;
+    border-radius: 28px;
+    color: #451a03;
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6), inset 0 2px 3px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+    transition: transform 0.1s, filter 0.1s;
+}
+
+.btn-gold-play:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.btn-gold-play:active {
+    transform: scale(0.98);
+}
+
+/* Wooden Carved Button */
+.btn-wood-menu {
+    width: 220px;
+    height: 48px;
+    background: linear-gradient(180deg, #92400e 0%, #78350f 50%, #451a03 100%);
+    border: 3px solid #fef08a;
+    border-radius: 24px;
+    color: #fef08a;
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    transition: transform 0.1s;
+}
+
+.btn-wood-menu:hover {
+    transform: scale(1.05);
+    filter: brightness(1.15);
+}
+
+/* ================= IN-GAME HUD ================= */
+#hud-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+/* Top HUD */
+.hud-top-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    pointer-events: auto;
+}
+
+/* Player Info Box */
+.hud-player-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(41, 37, 36, 0.85);
+    padding: 6px 16px 6px 6px;
+    border-radius: 35px;
+    border: 2px solid #ca8a04;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: transform 0.15s;
+}
+
+.hud-player-box:hover {
+    transform: scale(1.02);
+}
+
+.hud-avatar-wrapper {
+    position: relative;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: 3px solid #facc15;
+    background: #78350f;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+}
+
+.hud-avatar-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hud-level-badge {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    background: #dc2626;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 5px;
+    border-radius: 8px;
+    border: 1.5px solid #fef08a;
+}
+
+.hud-player-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 150px;
+}
+
+.hud-player-name {
+    font-size: 14px;
+    font-weight: 800;
+    color: #fef08a;
+    text-shadow: 0 1px 2px #000;
+}
+
+.hud-bar {
+    position: relative;
+    width: 100%;
+    height: 12px;
+    background: #1c1917;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hud-bar-fill {
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    transition: width 0.2s ease-out;
+}
+
+.hp-fill {
+    background: linear-gradient(90deg, #ef4444 0%, #f87171 100%);
+}
+
+.energy-fill {
+    background: linear-gradient(90deg, #0284c7 0%, #38bdf8 100%);
+}
+
+.hud-bar-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 1px 2px #000;
+}
+
+/* Top Center Currency */
+.hud-currency-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.currency-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(28, 25, 23, 0.88);
+    border: 2px solid #ca8a04;
+    padding: 4px 10px 4px 14px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.currency-icon {
+    font-size: 18px;
+}
+
+.currency-val {
+    font-size: 15px;
+    font-weight: 800;
+    color: #fef08a;
+    text-shadow: 0 1px 2px #000;
+}
+
+.btn-currency-add {
+    width: 22px;
+    height: 22px;
+    background: #22c55e;
+    color: #fff;
+    border: 1.5px solid #86efac;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.1s;
+}
+
+.btn-currency-add:hover {
+    transform: scale(1.15);
+}
+
+/* Top Right Quick Features */
+.hud-quick-features {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hud-feature-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    background: radial-gradient(circle, #92400e, #451a03);
+    border: 2px solid #facc15;
+    border-radius: 14px;
+    color: #fef08a;
+    font-size: 10px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    transition: transform 0.15s;
+}
+
+.hud-feature-btn:hover {
+    transform: scale(1.08);
+}
+
+.hud-feature-btn span.f-icon {
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+/* Bottom Controls */
+.hud-bottom-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    pointer-events: auto;
+}
+
+/* Virtual Joystick */
+.joystick-container {
+    width: 130px;
+    height: 130px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.joystick-base {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(120, 53, 15, 0.4), rgba(41, 37, 36, 0.7));
+    border: 3px solid rgba(250, 204, 21, 0.5);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    touch-action: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.joystick-thumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #facc15, #ca8a04);
+    border: 2px solid #fef08a;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+    transition: transform 0.05s ease-out;
+}
+
+/* Proximity Interaction Prompt Pill */
+#hud-interact-btn {
+    padding: 10px 24px;
+    background: linear-gradient(180deg, #22c55e, #15803d);
+    border: 2.5px solid #86efac;
+    color: #fff;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5);
+    animation: pulseInteract 1.5s infinite;
+}
+
+@keyframes pulseInteract {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+}
+
+/* Combat Action Buttons */
+.combat-actions-cluster {
+    position: relative;
+    width: 200px;
+    height: 150px;
+}
+
+.btn-attack-primary {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #facc15 0%, #ca8a04 60%, #78350f 100%);
+    border: 3.5px solid #fef08a;
+    color: #451a03;
+    font-size: 32px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6), 0 0 15px rgba(250, 204, 21, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.1s;
+}
+
+.btn-attack-primary:active {
+    transform: scale(0.92);
+}
+
+.btn-skill-sub {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #1e293b, #0f172a);
+    border: 2.5px solid #ca8a04;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.1s;
+}
+
+.btn-skill-sub:active {
+    transform: scale(0.92);
+}
+
+.skill-pos-1 {
+    bottom: 20px;
+    right: 105px;
+    border-color: #22c55e;
+}
+
+.skill-pos-2 {
+    bottom: 80px;
+    right: 85px;
+    border-color: #f59e0b;
+}
+
+.skill-pos-3 {
+    bottom: 95px;
+    right: 25px;
+    border-color: #38bdf8;
+}
