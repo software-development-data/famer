@@ -282,6 +282,19 @@ export class Enemy extends Entity {
                 this.goldReward = 850;
                 this.icon = '🐗';
                 break;
+            case 'wolf':
+                this.name = 'Sói Rừng Hoang Dã';
+                this.level = 14;
+                this.maxHp = 1500;
+                this.hp = 1500;
+                this.attack = 220;
+                this.defense = 110;
+                this.speed = 150;
+                this.aggroRange = 250;
+                this.expReward = 260;
+                this.goldReward = 1100;
+                this.icon = '🐺';
+                break;
             case 'quaden':
                 this.name = 'Quạ Đen Tinh Quái';
                 this.level = 10;

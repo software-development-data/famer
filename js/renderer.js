@@ -12,25 +12,39 @@ export class Renderer {
         // Camera
         this.camera = { x: 0, y: 0 };
 
-        // Preloaded Graphic Assets
+        // Preloaded Graphic Assets (Official Farmers-in-Chaotic-Times + Custom Vectors)
         this.assets = {
-            farmer: new Image(),
+            farmerMale: new Image(),
+            farmerFemale: new Image(),
             disciple: new Image(),
-            pet: new Image(),
+            petHamster: new Image(),
+            petDog: new Image(),
+            petBuffalo: new Image(),
+            wolf: new Image(),
             boar: new Image(),
             crow: new Image(),
             spider: new Image(),
             bandit: new Image(),
-            trap: new Image()
+            trap: new Image(),
+            hoe: new Image(),
+            rice: new Image(),
+            potion: new Image()
         };
-        this.assets.farmer.src = 'assets/images/sprite_farmer.svg';
+        this.assets.farmerMale.src = 'assets/v21/characters/farmer/male/idle.png';
+        this.assets.farmerFemale.src = 'assets/v21/characters/farmer/female/idle.png';
         this.assets.disciple.src = 'assets/images/sprite_disciple.svg';
-        this.assets.pet.src = 'assets/images/sprite_pet.svg';
+        this.assets.petHamster.src = 'assets/images/sprite_pet.svg';
+        this.assets.petDog.src = 'assets/v21/pets/dog/idle.png';
+        this.assets.petBuffalo.src = 'assets/v21/pets/buffalo/idle.png';
+        this.assets.wolf.src = 'assets/v21/monsters/wolf/idle.png';
         this.assets.boar.src = 'assets/icons/monster_boar.svg';
         this.assets.crow.src = 'assets/icons/monster_crow.svg';
         this.assets.spider.src = 'assets/icons/monster_spider.svg';
         this.assets.bandit.src = 'assets/icons/monster_bandit.svg';
         this.assets.trap.src = 'assets/icons/trap_bear.svg';
+        this.assets.hoe.src = 'assets/v21/items/hoe.png';
+        this.assets.rice.src = 'assets/v21/items/rice.png';
+        this.assets.potion.src = 'assets/v21/items/potion.png';
 
         this.initCanvasSize();
         window.addEventListener('resize', () => this.initCanvasSize());
@@ -432,8 +446,11 @@ export class Renderer {
         // Bobbing walk cycle
         const bob = player.isMoving ? Math.sin(player.animTimer * 25) * 3 : 0;
 
-        if (this.assets.farmer.complete && this.assets.farmer.naturalWidth > 0) {
-            ctx.drawImage(this.assets.farmer, -30, -56 + bob, 60, 76);
+        const isFemale = window.__gameState && window.__gameState.data.player.gender === 'female';
+        const heroSprite = isFemale ? this.assets.farmerFemale : this.assets.farmerMale;
+
+        if (heroSprite && heroSprite.complete && heroSprite.naturalWidth > 0) {
+            ctx.drawImage(heroSprite, -32, -58 + bob, 64, 80);
         } else {
             // Legs / Pants
             ctx.fillStyle = '#475569';
@@ -598,8 +615,12 @@ export class Renderer {
         ctx.translate(px, py);
         if (pet.direction === -1) ctx.scale(-1, 1);
 
-        if (this.assets.pet.complete && this.assets.pet.naturalWidth > 0) {
-            ctx.drawImage(this.assets.pet, -22, -26, 44, 48);
+        let petSprite = this.assets.petHamster;
+        if (pet.data.id === 'gatrong' || pet.data.id === 'dog') petSprite = this.assets.petDog;
+        else if (pet.data.id === 'heorung' || pet.data.id === 'buffalo') petSprite = this.assets.petBuffalo;
+
+        if (petSprite && petSprite.complete && petSprite.naturalWidth > 0) {
+            ctx.drawImage(petSprite, -24, -28, 48, 52);
         } else {
             // Cute Hamster Body (Orange / Cream)
             ctx.beginPath();
@@ -668,13 +689,14 @@ export class Renderer {
 
         // Enemy Icon / Sprite Representation
         let enemyImg = null;
-        if (enemy.type === 'heorung') enemyImg = this.assets.boar;
+        if (enemy.type === 'wolf') enemyImg = this.assets.wolf;
+        else if (enemy.type === 'heorung') enemyImg = this.assets.boar;
         else if (enemy.type === 'quaden') enemyImg = this.assets.crow;
         else if (enemy.type === 'nhen') enemyImg = this.assets.spider;
         else if (enemy.type === 'thophi') enemyImg = this.assets.bandit;
 
         if (enemyImg && enemyImg.complete && enemyImg.naturalWidth > 0) {
-            ctx.drawImage(enemyImg, -26, -26, 52, 52);
+            ctx.drawImage(enemyImg, -28, -28, 56, 56);
         } else {
             ctx.font = '36px serif';
             ctx.textAlign = 'center';

@@ -1,0 +1,74 @@
+{
+  "version": 18,
+  "status": "art-catalog-only; future era maps are not live",
+  "rules": [
+    "Human soldiers are fictional opposing NPCs, not monsters representing a nationality.",
+    "No modern enemies spawn in the starter village or bamboo forest.",
+    "Fantasy machines are not historical military equipment.",
+    "Uniforms are stylized inspiration and need period-specific research before historical release."
+  ],
+  "eras": [
+    {
+      "id": "mythic-origins",
+      "name": "Khởi nguyên và huyền sử",
+      "enemies": [
+        "wolf",
+        "fire-spirit",
+        "water-spirit",
+        "stone-spirit",
+        "wind-spirit"
+      ],
+      "layer": "fiction-and-legend"
+    },
+    {
+      "id": "ancient-occupation",
+      "name": "Các thời kỳ Bắc thuộc — tách theo chương cụ thể khi triển khai",
+      "enemies": [
+        "ancient-garrison"
+      ],
+      "layer": "historically-inspired-fiction",
+      "status": "npc-art-only"
+    },
+    {
+      "id": "dynastic",
+      "name": "Các triều đại tự chủ",
+      "enemies": [],
+      "status": "planned-not-created"
+    },
+    {
+      "id": "colonial",
+      "name": "Thời thuộc Pháp",
+      "chapterRange": "1858–1954; không coi một bộ quân phục đại diện toàn kỳ",
+      "enemies": [
+        "colonial-patrol"
+      ],
+      "layer": "historically-inspired-fiction",
+      "status": "npc-art-only"
+    },
+    {
+      "id": "twentieth-century-conflict",
+      "name": "Chương kháng chiến chống Mỹ",
+      "chapterRange": "1954–1975; đơn vị cụ thể cần mốc xuất hiện riêng",
+      "enemies": [
+        "twentieth-century-patrol"
+      ],
+      "layer": "historically-inspired-fiction",
+      "status": "npc-art-only"
+    },
+    {
+      "id": "modern-fantasy",
+      "name": "Hiện đại — tuyến cơ khí và công nghệ giả tưởng",
+      "enemies": [
+        "iron-fang-copter",
+        "iron-beak-plane",
+        "lost-firework",
+        "phone-glitch",
+        "television-static",
+        "ai-orb",
+        "scrap-robot"
+      ],
+      "layer": "fiction",
+      "status": "art-and-pose-preview-only"
+    }
+  ]
+}

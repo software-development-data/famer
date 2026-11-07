@@ -1,0 +1,614 @@
+{
+  "schemaVersion": 1,
+  "game": "Nông Dân Thời Loạn",
+  "assets": [
+    {
+      "id": "effects_skills_farmer_basic_attack_impact.png",
+      "path": "/assets/effects/skills/farmer_basic_attack_impact.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 20,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "impact",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_projectiles_farmer_basic_attack.png",
+      "path": "/assets/effects/projectiles/farmer_basic_attack.png",
+      "width": 64,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "projectile",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_skills_archer_basic_attack_impact.png",
+      "path": "/assets/effects/skills/archer_basic_attack_impact.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 20,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "impact",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_projectiles_archer_basic_attack.png",
+      "path": "/assets/effects/projectiles/archer_basic_attack.png",
+      "width": 64,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "projectile",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_skills_archer_multi_arrow_impact.png",
+      "path": "/assets/effects/skills/archer_multi_arrow_impact.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 20,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "impact",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_projectiles_archer_multi_arrow.png",
+      "path": "/assets/effects/projectiles/archer_multi_arrow.png",
+      "width": 64,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "projectile",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_skills_archer_poison_rain_impact.png",
+      "path": "/assets/effects/skills/archer_poison_rain_impact.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 20,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "impact",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_projectiles_archer_poison_rain.png",
+      "path": "/assets/effects/projectiles/archer_poison_rain.png",
+      "width": 64,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "projectile",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_skills_gunner_basic_attack_impact.png",
+      "path": "/assets/effects/skills/gunner_basic_attack_impact.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 20,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "impact",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_projectiles_gunner_basic_attack.png",
+      "path": "/assets/effects/projectiles/gunner_basic_attack.png",
+      "width": 64,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "projectile",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_skills_gunner_rapid_fire_impact.png",
+      "path": "/assets/effects/skills/gunner_rapid_fire_impact.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 20,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "impact",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_projectiles_gunner_rapid_fire.png",
+      "path": "/assets/effects/projectiles/gunner_rapid_fire.png",
+      "width": 64,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "projectile",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_skills_gunner_poison_bullet_impact.png",
+      "path": "/assets/effects/skills/gunner_poison_bullet_impact.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 20,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "impact",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_projectiles_gunner_poison_bullet.png",
+      "path": "/assets/effects/projectiles/gunner_poison_bullet.png",
+      "width": 64,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "projectile",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_skills_assassin_basic_attack_impact.png",
+      "path": "/assets/effects/skills/assassin_basic_attack_impact.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 20,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "impact",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_projectiles_assassin_basic_attack.png",
+      "path": "/assets/effects/projectiles/assassin_basic_attack.png",
+      "width": 64,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "projectile",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_skills_assassin_poison_blade_impact.png",
+      "path": "/assets/effects/skills/assassin_poison_blade_impact.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 20,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "impact",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_projectiles_assassin_poison_blade.png",
+      "path": "/assets/effects/projectiles/assassin_poison_blade.png",
+      "width": 64,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "projectile",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_skills_assassin_shadow_step_impact.png",
+      "path": "/assets/effects/skills/assassin_shadow_step_impact.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 20,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "impact",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_projectiles_assassin_shadow_step.png",
+      "path": "/assets/effects/projectiles/assassin_shadow_step.png",
+      "width": 64,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "projectile",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_skills_swordsman_basic_attack_impact.png",
+      "path": "/assets/effects/skills/swordsman_basic_attack_impact.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 20,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "impact",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_projectiles_swordsman_basic_attack.png",
+      "path": "/assets/effects/projectiles/swordsman_basic_attack.png",
+      "width": 64,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "projectile",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_skills_swordsman_sword_aura_impact.png",
+      "path": "/assets/effects/skills/swordsman_sword_aura_impact.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 20,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "impact",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_projectiles_swordsman_sword_aura.png",
+      "path": "/assets/effects/projectiles/swordsman_sword_aura.png",
+      "width": 64,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "projectile",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_skills_swordsman_armor_break_impact.png",
+      "path": "/assets/effects/skills/swordsman_armor_break_impact.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 20,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "impact",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_projectiles_swordsman_armor_break.png",
+      "path": "/assets/effects/projectiles/swordsman_armor_break.png",
+      "width": 64,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "projectile",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_auras_aura_fire.png",
+      "path": "/assets/effects/auras/aura_fire.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 12,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "aura",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_auras_aura_water.png",
+      "path": "/assets/effects/auras/aura_water.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 12,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "aura",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_auras_aura_lightning.png",
+      "path": "/assets/effects/auras/aura_lightning.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 12,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "aura",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_auras_aura_ice.png",
+      "path": "/assets/effects/auras/aura_ice.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 12,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "aura",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_auras_aura_wood.png",
+      "path": "/assets/effects/auras/aura_wood.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 12,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "aura",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_auras_aura_poison.png",
+      "path": "/assets/effects/auras/aura_poison.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 12,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "aura",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_auras_aura_wind.png",
+      "path": "/assets/effects/auras/aura_wind.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 12,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "aura",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_auras_aura_earth.png",
+      "path": "/assets/effects/auras/aura_earth.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 12,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "aura",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_auras_aura_shadow.png",
+      "path": "/assets/effects/auras/aura_shadow.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 12,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "aura",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_auras_aura_light.png",
+      "path": "/assets/effects/auras/aura_light.png",
+      "width": 1024,
+      "height": 128,
+      "frameWidth": 128,
+      "frameHeight": 128,
+      "frames": 8,
+      "fps": 12,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "aura",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_poison_status_poison.png",
+      "path": "/assets/effects/poison/status_poison.png",
+      "width": 512,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 8,
+      "fps": 12,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "status",
+      "status": "procedural-fx"
+    },
+    {
+      "id": "effects_earth_status_armor_break.png",
+      "path": "/assets/effects/earth/status_armor_break.png",
+      "width": 512,
+      "height": 64,
+      "frameWidth": 64,
+      "frameHeight": 64,
+      "frames": 8,
+      "fps": 12,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "role": "status",
+      "status": "procedural-fx"
+    }
+  ]
+}

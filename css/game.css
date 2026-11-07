@@ -364,7 +364,7 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(120, 53, 15, 0.4), rgba(41, 37, 36, 0.7));
+    background: url('../assets/v21/ui/buttons/control-ring.png') no-repeat center center / contain, radial-gradient(circle, rgba(120, 53, 15, 0.4), rgba(41, 37, 36, 0.7));
     border: 3px solid rgba(250, 204, 21, 0.5);
     position: relative;
     display: flex;

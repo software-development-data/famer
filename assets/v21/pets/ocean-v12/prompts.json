@@ -1,0 +1,74 @@
+[
+  {
+    "id": "starfish",
+    "name": "Sao Biển Hồng",
+    "prompt": "Use case: stylized-concept. Asset type: standalone 2D game pet cutout for Vietnamese MMORPG Nông Dân Thời Loạn. Input image: user's ocean pet sheet is a STYLE reference only. Draw exactly ONE pet: a plump pink five-armed starfish, small ivory speckles, happy face. Match the reference's adorable plump chibi proportions, large glossy dark brown eyes, rosy cheeks, gentle rounded brown outlines, pastel yet luminous colors, delicate painted shading and small pearly highlights. Original clean game illustration, readable at small scale. Full body, centered, generous transparent margin on every side. Three-quarter view unless starfish/clam front view. No white sticker border, no background, no scene, no text, no watermark, no extra creatures, no UI frame. Genuine transparent PNG background. This is a static single pose, not an animation sheet.",
+    "source": "C:\\Users\\PC\\.codex\\generated_images\\01a18149-c5c1-7230-8d70-5938c0d4e14d\\exec-e0a7838d-acf4-4177-a764-055e02692f72.png"
+  },
+  {
+    "id": "pearl-clam",
+    "name": "Trai Ngọc",
+    "prompt": "Use case: stylized-concept. Asset type: standalone 2D game pet cutout for Vietnamese MMORPG Nông Dân Thời Loạn. Input image: user's ocean pet sheet is a STYLE reference only. Draw exactly ONE pet: a pink scalloped open clam with one cute smiling ivory pearl inside, no seabed. Match the reference's adorable plump chibi proportions, large glossy dark brown eyes, rosy cheeks, gentle rounded brown outlines, pastel yet luminous colors, delicate painted shading and small pearly highlights. Original clean game illustration, readable at small scale. Full body, centered, generous transparent margin on every side. Three-quarter view unless starfish/clam front view. No white sticker border, no background, no scene, no text, no watermark, no extra creatures, no UI frame. Genuine transparent PNG background. This is a static single pose, not an animation sheet.",
+    "source": "C:\\Users\\PC\\.codex\\generated_images\\01a18149-c5c1-7230-8d70-5938c0d4e14d\\exec-4e67871a-b867-4d19-8560-35568b9912cb.png"
+  },
+  {
+    "id": "manta-ray",
+    "name": "Đuối Ngọc",
+    "prompt": "Draw a friendly illustrated sea animal for a children's ocean game: a mint turquoise baby manta ray with broad rounded wings, cream underside and slender curved tail. Single animal fully visible centered on a transparent background. Cute rounded cartoon illustration, soft pastel colors, warm fine outlines, glossy eyes, gentle painted shading. No lettering, no border, no other animals, no backdrop.",
+    "source": "C:\\Users\\PC\\.codex\\generated_images\\01a18149-c5c1-7230-8d70-5938c0d4e14d\\exec-4f2009f3-58ce-44a7-93b3-6c5676e043ef.png"
+  },
+  {
+    "id": "sea-turtle",
+    "name": "Rùa Biển",
+    "prompt": "Draw a friendly illustrated sea animal for a children's ocean game: a green baby sea turtle with amber hexagonal shell and four rounded flippers. Single animal fully visible centered on a transparent background. Cute rounded cartoon illustration, soft pastel colors, warm fine outlines, glossy eyes, gentle painted shading. No lettering, no border, no other animals, no backdrop.",
+    "source": "C:\\Users\\PC\\.codex\\generated_images\\01a18149-c5c1-7230-8d70-5938c0d4e14d\\exec-2ce99f0a-c913-4f32-9a8a-e45fb7343a34.png"
+  },
+  {
+    "id": "seahorse",
+    "name": "Cá Ngựa",
+    "prompt": "Draw a friendly illustrated sea animal for a children's ocean game: a golden peach baby seahorse with coral pink crest, curled tail and tiny fins. Single animal fully visible centered on a transparent background. Cute rounded cartoon illustration, soft pastel colors, warm fine outlines, glossy eyes, gentle painted shading. No lettering, no border, no other animals, no backdrop.",
+    "source": "C:\\Users\\PC\\.codex\\generated_images\\01a18149-c5c1-7230-8d70-5938c0d4e14d\\exec-e1cfd71e-891c-445e-8e9b-4145e2eb20ef.png"
+  },
+  {
+    "id": "narwhal",
+    "name": "Kỳ Lân Biển",
+    "prompt": "Draw a friendly illustrated sea animal for a children's ocean game: a round sky blue narwhal with cream tummy and small pastel spiral horn. Single animal fully visible centered on a transparent background. Cute rounded cartoon illustration, soft pastel colors, warm fine outlines, glossy eyes, gentle painted shading. No lettering, no border, no other animals, no backdrop.",
+    "source": "C:\\Users\\PC\\.codex\\generated_images\\01a18149-c5c1-7230-8d70-5938c0d4e14d\\exec-eca4da62-396a-48b9-a360-3e626a9c80c0.png"
+  },
+  {
+    "id": "octopus",
+    "name": "Bạch Tuộc",
+    "prompt": "Draw a friendly illustrated sea animal for a children's ocean game: a rosy pink friendly baby octopus with eight readable short curling arms. Single animal fully visible centered on a transparent background. Cute rounded cartoon illustration, soft pastel colors, warm fine outlines, glossy eyes, gentle painted shading. No lettering, no border, no other animals, no backdrop.",
+    "source": "C:\\Users\\PC\\.codex\\generated_images\\01a18149-c5c1-7230-8d70-5938c0d4e14d\\exec-399db445-36e5-4ed0-a7a9-4f445eb995b0.png"
+  },
+  {
+    "id": "dolphin",
+    "name": "Cá Heo",
+    "prompt": "Draw a friendly illustrated sea animal for a children's ocean game: a cheerful sky blue baby dolphin in a gently curved swimming pose, cream underside. Single animal fully visible centered on a transparent background. Cute rounded cartoon illustration, soft pastel colors, warm fine outlines, glossy eyes, gentle painted shading. No lettering, no border, no other animals, no backdrop.",
+    "source": "C:\\Users\\PC\\.codex\\generated_images\\01a18149-c5c1-7230-8d70-5938c0d4e14d\\exec-c7ccbea0-e0a5-4da1-be30-d79a22e31513.png"
+  },
+  {
+    "id": "pufferfish",
+    "name": "Cá Nóc",
+    "prompt": "Draw a friendly illustrated sea animal for a children's ocean game: a round butter yellow baby pufferfish with soft tiny rounded spikes, little orange fins. Single animal fully visible centered on a transparent background. Cute rounded cartoon illustration, soft pastel colors, warm fine outlines, glossy eyes, gentle painted shading. No lettering, no border, no other animals, no backdrop.",
+    "source": "C:\\Users\\PC\\.codex\\generated_images\\01a18149-c5c1-7230-8d70-5938c0d4e14d\\exec-5b6ed5e3-5ffb-4776-ac5e-6457d7d10fc8.png"
+  },
+  {
+    "id": "crab",
+    "name": "Cua Hồng",
+    "prompt": "Draw a friendly illustrated sea animal for a children's ocean game: a coral pink baby crab with two raised rounded claws, small legs and big friendly eyes. Single animal fully visible centered on a transparent background. Cute rounded cartoon illustration, soft pastel colors, warm fine outlines, glossy eyes, gentle painted shading. No lettering, no border, no other animals, no backdrop.",
+    "source": "C:\\Users\\PC\\.codex\\generated_images\\01a18149-c5c1-7230-8d70-5938c0d4e14d\\exec-f394f21e-04ba-4e2b-a330-4269c9c82153.png"
+  },
+  {
+    "id": "whale",
+    "name": "Cá Voi",
+    "prompt": "Draw a friendly illustrated sea animal for a children's ocean game: a rounded indigo blue baby whale with cream pleated belly, raised tail and tiny water spout. Single animal fully visible centered on a transparent background. Cute rounded cartoon illustration, soft pastel colors, warm fine outlines, glossy eyes, gentle painted shading. No lettering, no border, no other animals, no backdrop.",
+    "source": "C:\\Users\\PC\\.codex\\generated_images\\01a18149-c5c1-7230-8d70-5938c0d4e14d\\exec-df090a34-2e0d-4277-b7df-094c99480b37.png"
+  },
+  {
+    "id": "jellyfish",
+    "name": "Sứa Ngọc",
+    "prompt": "Draw a friendly illustrated sea animal for a children's ocean game: a pearlescent lavender pink baby jellyfish with rounded translucent bell and softly curling pastel tentacles. Single animal fully visible centered on a transparent background. Cute rounded cartoon illustration, soft pastel colors, warm fine outlines, glossy eyes, gentle painted shading. No lettering, no border, no other animals, no backdrop.",
+    "source": "C:\\Users\\PC\\.codex\\generated_images\\01a18149-c5c1-7230-8d70-5938c0d4e14d\\exec-ee25c514-645e-4116-b378-af3c81a4dfc7.png"
+  }
+]

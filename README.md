@@ -143,8 +143,32 @@ famer/
 │   ├── ui.js                   # Xử lý toàn bộ logic 15 màn hình / modal, vòng quay may mắn
 │   └── main.js                 # Vòng lặp game loop chính & tiếp nhận điều khiển
 └── assets/
-    └── images/                 # Hình ảnh nhân vật, icon, texture và reference UI gốc
+    ├── v21/                    # Thư viện asset chính thức từ Farmers-in-Chaotic-Times
+    │   ├── characters/         # Sprites nhân vật Nông Dân nam/nữ, kiếm khách, cung thủ
+    │   ├── items/              # Cuốc, lúa, hạt giống, bình máu, đao kiếm, công cụ
+    │   ├── pets/               # Nghé Lúa / Trâu, Chó Vàng, Chim Lạc
+    │   ├── monsters/           # Sói rừng hoang dã và quái vật
+    │   ├── skills/             # Kỹ năng Nông Dân, Cung Thủ, Đao Khách
+    │   ├── audio/              # Sound effects WAV từ game
+    │   ├── ui/                 # Vòng điều khiển Joystick, icon, khung cửa sổ
+    │   └── maps/               # Bản đồ nền Làng Thanh Khê
+    ├── icons/                  # Bộ icon vector SVG sắc nét
+    └── images/                 # Hình ảnh sprite và UI gốc
 ```
+
+---
+
+## 🎨 Nguồn Tài Nguyên & Assets
+
+Toàn bộ tài nguyên đồ họa và âm thanh gốc được tích hợp trực tiếp từ repository:  
+👉 **[software-development-data/Farmers-in-Chaotic-Times](https://github.com/software-development-data/Farmers-in-Chaotic-Times)**
+
+- **Nhân vật & Chân dung**: `assets/v21/characters/farmer/` (Nông Dân nam/nữ idle và portrait).
+- **Thú cưng**: `assets/v21/pets/` (Nghé Lúa, Chó Vàng, Chim Lạc).
+- **Vật phẩm & Nông cụ**: `assets/v21/items/` (Cuốc, Lúa, Hạt giống, Bình máu, Nanh sói).
+- **Kỹ năng**: `assets/v21/skills/` (Kỹ năng cuốc chém, tên bắn, ám tiễn).
+- **Âm thanh**: `assets/v21/audio/` (WAV effects).
+- **Giao diện**: `assets/v21/ui/` (Vòng điều khiển `control-ring.png`, `panel-frame.png`, icon).
 
 ---
 

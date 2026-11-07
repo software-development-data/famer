@@ -1,0 +1,17 @@
+{
+  "method": "built-in imagegen",
+  "assets": [
+    {
+      "id": "window-body",
+      "prompt": "Standalone 2D HD Vietnamese MMORPG UI asset. ONE rectangular game window body, square aspect ratio, narrow hand-painted dark wood and warm bronze rim, small jade corner clasps, uninterrupted opaque deep emerald jade center with very subtle texture. NO header plaque, no title, no rice bunches, no protruding leaves, no buttons. Border takes at most 7% width; center is generous empty content area. Match rich hand-painted cartoon jade/bronze/wood theme, strong clean dark outlines, polished but restrained highlights, readable at small sizes. Exactly one asset, no mockup, no sheet, no watermark. Transparent background OUTSIDE the object; opaque inside.",
+      "path": "/assets/ui/v21/window-body.png",
+      "status": "integrated"
+    },
+    {
+      "id": "action-button",
+      "prompt": "Standalone 2D HD Vietnamese MMORPG UI asset. ONE compact horizontal rounded rectangular game button, 3:1 aspect ratio, jade green inset with narrow bronze rim and crisp gold edge highlights. Generous EMPTY center for short text, no letters, no rice ornaments, no pointed arrows. Restrained proportions, not an elongated spear. Match rich hand-painted cartoon jade/bronze/wood theme, strong clean dark outlines, polished but restrained highlights, readable at small sizes. Exactly one asset, no mockup, no sheet, no watermark. Transparent background OUTSIDE the object; opaque inside.",
+      "path": "/assets/ui/v21/action-button.png",
+      "status": "integrated"
+    }
+  ]
+}

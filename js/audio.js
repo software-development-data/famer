@@ -130,6 +130,15 @@ class SoundEngine {
         this.bgmTimer = setTimeout(() => this.playBGMSequence(), nextDelay);
     }
 
+    playAudioFile(filename) {
+        if (this.isMuted) return;
+        try {
+            const a = new Audio(`assets/v21/audio/${filename}`);
+            a.volume = this.volume;
+            a.play().catch(() => {});
+        } catch (e) {}
+    }
+
     // Sound Effects
     playClick() {
         if (this.isMuted) return;
@@ -155,6 +164,7 @@ class SoundEngine {
 
     playAttack() {
         if (this.isMuted) return;
+        this.playAudioFile('farmer_basic_attack.wav');
         this.init();
         try {
             const now = this.ctx.currentTime;
@@ -177,6 +187,7 @@ class SoundEngine {
 
     playShoot() {
         if (this.isMuted) return;
+        this.playAudioFile('archer_multi_arrow.wav');
         this.init();
         try {
             const now = this.ctx.currentTime;

@@ -69,6 +69,10 @@ class Game {
         list.push(new Enemy('nhen', 1980, 850));
         list.push(new Enemy('nhen', 2280, 780));
 
+        // Sói Rừng (Wild Wolves from V21)
+        list.push(new Enemy('wolf', 1850, 520));
+        list.push(new Enemy('wolf', 2050, 750));
+
         // Thổ Phỉ (Bandit Raider Chiefs)
         list.push(new Enemy('thophi', 2150, 320));
         list.push(new Enemy('thophi', 2340, 600));

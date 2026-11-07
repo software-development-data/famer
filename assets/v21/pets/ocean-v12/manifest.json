@@ -1,0 +1,186 @@
+{
+  "title": "Nông Dân Thời Loạn — Pet biển V12",
+  "generator": "imagegen built-in",
+  "assets": [
+    {
+      "id": "ocean_starfish",
+      "name": "Sao Biển Hồng",
+      "path": "starfish.png",
+      "width": 1312,
+      "height": 1199,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "icon": "icons/starfish.png",
+      "status": "static artwork; gameplay and animations not connected"
+    },
+    {
+      "id": "ocean_pearl-clam",
+      "name": "Trai Ngọc",
+      "path": "pearl-clam.png",
+      "width": 1312,
+      "height": 1199,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "icon": "icons/pearl-clam.png",
+      "status": "static artwork; gameplay and animations not connected"
+    },
+    {
+      "id": "ocean_manta-ray",
+      "name": "Đuối Ngọc",
+      "path": "manta-ray.png",
+      "width": 1536,
+      "height": 1024,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "icon": "icons/manta-ray.png",
+      "status": "static artwork; gameplay and animations not connected"
+    },
+    {
+      "id": "ocean_sea-turtle",
+      "name": "Rùa Biển",
+      "path": "sea-turtle.png",
+      "width": 1536,
+      "height": 1024,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "icon": "icons/sea-turtle.png",
+      "status": "static artwork; gameplay and animations not connected"
+    },
+    {
+      "id": "ocean_seahorse",
+      "name": "Cá Ngựa",
+      "path": "seahorse.png",
+      "width": 1024,
+      "height": 1536,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "icon": "icons/seahorse.png",
+      "status": "static artwork; gameplay and animations not connected"
+    },
+    {
+      "id": "ocean_narwhal",
+      "name": "Kỳ Lân Biển",
+      "path": "narwhal.png",
+      "width": 1374,
+      "height": 1145,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "icon": "icons/narwhal.png",
+      "status": "static artwork; gameplay and animations not connected"
+    },
+    {
+      "id": "ocean_octopus",
+      "name": "Bạch Tuộc",
+      "path": "octopus.png",
+      "width": 1312,
+      "height": 1199,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "icon": "icons/octopus.png",
+      "status": "static artwork; gameplay and animations not connected"
+    },
+    {
+      "id": "ocean_dolphin",
+      "name": "Cá Heo",
+      "path": "dolphin.png",
+      "width": 1312,
+      "height": 1199,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "icon": "icons/dolphin.png",
+      "status": "static artwork; gameplay and animations not connected"
+    },
+    {
+      "id": "ocean_pufferfish",
+      "name": "Cá Nóc",
+      "path": "pufferfish.png",
+      "width": 1356,
+      "height": 1159,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "icon": "icons/pufferfish.png",
+      "status": "static artwork; gameplay and animations not connected"
+    },
+    {
+      "id": "ocean_crab",
+      "name": "Cua Hồng",
+      "path": "crab.png",
+      "width": 1536,
+      "height": 1024,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "icon": "icons/crab.png",
+      "status": "static artwork; gameplay and animations not connected"
+    },
+    {
+      "id": "ocean_whale",
+      "name": "Cá Voi",
+      "path": "whale.png",
+      "width": 1422,
+      "height": 1106,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "icon": "icons/whale.png",
+      "status": "static artwork; gameplay and animations not connected"
+    },
+    {
+      "id": "ocean_jellyfish",
+      "name": "Sứa Ngọc",
+      "path": "jellyfish.png",
+      "width": 1145,
+      "height": 1374,
+      "frames": 1,
+      "fps": 0,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "icon": "icons/jellyfish.png",
+      "status": "static artwork; gameplay and animations not connected"
+    }
+  ]
+}
