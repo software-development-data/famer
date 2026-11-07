@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="title-center">
-                    <img src="assets/images/title_logo.png" alt="Nông Dân Thời Loạn" class="title-logo-img">
+                    <img src="assets/v21/ui/logo/nong-dan-thoi-loan.png" alt="Nông Dân Thời Loạn" class="title-logo-img">
                 </div>
 
                 <div class="title-button-group">
@@ -60,12 +60,12 @@
                         <!-- Currency -->
                         <div class="hud-currency-container">
                             <div class="currency-pill">
-                                <span class="currency-icon">🪙</span>
+                                <span class="currency-icon"><img src="assets/v21/items/rice.png" class="hud-currency-icon-img" alt="Vàng"></span>
                                 <span class="currency-val" id="hud-gold-val">328.450</span>
                                 <button class="btn-currency-add" id="btn-add-gold">+</button>
                             </div>
                             <div class="currency-pill">
-                                <span class="currency-icon">💎</span>
+                                <span class="currency-icon"><img src="assets/icons/gem_ruby.svg" class="hud-currency-icon-img" alt="Kim Cương"></span>
                                 <span class="currency-val" id="hud-diamonds-val">12.680</span>
                                 <button class="btn-currency-add" id="btn-add-diamonds">+</button>
                             </div>
@@ -74,21 +74,25 @@
 
                         <!-- Quick Features -->
                         <div class="hud-quick-features">
-                            <button class="hud-feature-btn" id="hud-btn-events">
-                                <span class="f-icon">🎁</span>
-                                <span>Sự Kiện</span>
+                            <button class="hud-feature-btn" id="hud-btn-inventory" title="Hành Trang / Túi Đồ">
+                                <span class="f-icon"><img src="assets/v21/ui/icons/inventory.png" class="hud-feature-img" alt="Túi Đồ"></span>
+                                <span>Túi Đồ</span>
                             </button>
-                            <button class="hud-feature-btn" id="hud-btn-checkin">
-                                <span class="f-icon">🎀</span>
-                                <span>Phúc Lợi</span>
-                            </button>
-                            <button class="hud-feature-btn" id="hud-btn-shop">
-                                <span class="f-icon">🏪</span>
+                            <button class="hud-feature-btn" id="hud-btn-shop" title="Cửa Hàng Nông Dân">
+                                <span class="f-icon"><img src="assets/v21/ui/icons/shop.png" class="hud-feature-img" alt="Cửa Hàng"></span>
                                 <span>Cửa Hàng</span>
                             </button>
-                            <button class="hud-feature-btn" id="hud-btn-quests">
-                                <span class="f-icon">📜</span>
+                            <button class="hud-feature-btn" id="hud-btn-quests" title="Nhiệm Vụ Hàng Ngày">
+                                <span class="f-icon"><img src="assets/v21/ui/icons/quest.png" class="hud-feature-img" alt="Nhiệm Vụ"></span>
                                 <span>Nhiệm Vụ</span>
+                            </button>
+                            <button class="hud-feature-btn" id="hud-btn-checkin" title="Phúc Lợi Điểm Danh">
+                                <span class="f-icon"><img src="assets/v21/items/seal.png" class="hud-feature-img" alt="Phúc Lợi"></span>
+                                <span>Phúc Lợi</span>
+                            </button>
+                            <button class="hud-feature-btn" id="hud-btn-events" title="Sự Kiện Vụ Mùa">
+                                <span class="f-icon"><img src="assets/icons/chest_gold.svg" class="hud-feature-img" alt="Sự Kiện"></span>
+                                <span>Sự Kiện</span>
                             </button>
                         </div>
                     </div>
@@ -107,10 +111,18 @@
 
                         <!-- Combat Action Buttons -->
                         <div class="combat-actions-cluster">
-                            <button class="btn-attack-primary" id="btn-action-attack" title="Tấn công [Space/J]">⚔️</button>
-                            <button class="btn-skill-sub skill-pos-1" id="btn-skill-shoot" title="Cung Tiễn [K]">🏹</button>
-                            <button class="btn-skill-sub skill-pos-2" id="btn-skill-trap" title="Bẫy [L]">🪤</button>
-                            <button class="btn-skill-sub skill-pos-3" id="btn-skill-sprint" title="Tăng Tốc [U/Shift]">⚡</button>
+                            <button class="btn-attack-primary" id="btn-action-attack" title="Tấn công [Space/J]">
+                                <img src="assets/v21/skills/farmer/farmer_basic_attack.png" alt="Chém" class="combat-action-img">
+                            </button>
+                            <button class="btn-skill-sub skill-pos-1" id="btn-skill-shoot" title="Cung Tiễn [K]">
+                                <img src="assets/v21/skills/archer/archer_multi_arrow.png" alt="Bắn Cung" class="combat-action-img">
+                            </button>
+                            <button class="btn-skill-sub skill-pos-2" id="btn-skill-trap" title="Bẫy [L]">
+                                <img src="assets/v21/skills/swordsman/swordsman_iron_wall.png" alt="Bẫy" class="combat-action-img">
+                            </button>
+                            <button class="btn-skill-sub skill-pos-3" id="btn-skill-sprint" title="Tăng Tốc [U/Shift]">
+                                <img src="assets/v21/skills/archer/archer_wind_step.png" alt="Tăng Tốc" class="combat-action-img">
+                            </button>
                         </div>
                     </div>
                 </div>

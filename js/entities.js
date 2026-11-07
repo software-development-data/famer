@@ -321,6 +321,32 @@ export class Enemy extends Entity {
                 this.goldReward = 1400;
                 this.icon = '🕷️';
                 break;
+            case 'fire_hatchling':
+                this.name = 'Hỏa Tinh Ấu Trùng';
+                this.level = 16;
+                this.maxHp = 2200;
+                this.hp = 2200;
+                this.attack = 300;
+                this.defense = 160;
+                this.speed = 130;
+                this.aggroRange = 250;
+                this.expReward = 380;
+                this.goldReward = 1800;
+                this.icon = '🔥';
+                break;
+            case 'iron_copter':
+                this.name = 'Thiết Giáp Phi Cơ';
+                this.level = 20;
+                this.maxHp = 3500;
+                this.hp = 3500;
+                this.attack = 420;
+                this.defense = 260;
+                this.speed = 170;
+                this.aggroRange = 280;
+                this.expReward = 600;
+                this.goldReward = 3200;
+                this.icon = '🛸';
+                break;
             case 'thophi':
             default:
                 this.name = 'Thổ Phỉ Trấn Giữ Rừng';

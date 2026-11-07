@@ -1,6 +1,6 @@
 // Game State Management & LocalStorage Persistence for "Nông Dân Thời Loạn"
 
-const STORAGE_KEY = 'NONG_DAN_THOI_LOAN_SAVE_V1';
+const STORAGE_KEY = 'NONG_DAN_THOI_LOAN_SAVE_V2';
 
 export class GameState {
     constructor() {
@@ -37,54 +37,54 @@ export class GameState {
                 speed: 320,
                 gold: 328450,
                 diamonds: 12680,
-                avatar: 'avatar_farmer.png'
+                avatar: 'assets/v21/characters/farmer/male/portrait.png'
             },
             equipment: {
-                hat: { id: 'hat_1', name: 'Nón Lá Thần Nông', type: 'hat', icon: '👒', hp: 450, def: 120, rarity: 'rare' },
-                armor: { id: 'armor_1', name: 'Áo Nông Dân Bền Bỉ', type: 'armor', icon: '🥋', hp: 800, def: 240, rarity: 'rare' },
-                weapon: { id: 'wpn_1', name: 'Cuốc Sắt Trấn Phái', type: 'weapon', icon: '⛏️', atk: 650, rarity: 'epic' },
-                boots: { id: 'boot_1', name: 'Hài Cỏ Phiêu Du', type: 'boots', icon: '👞', spd: 80, def: 90, rarity: 'rare' },
-                gloves: { id: 'glov_1', name: 'Hộ Thủ Vải Thô', type: 'gloves', icon: '🧤', atk: 180, def: 70, rarity: 'uncommon' },
-                necklace: { id: 'neck_1', name: 'Ngọc Bội Bình An', type: 'necklace', icon: '📿', hp: 500, atk: 120, rarity: 'rare' },
-                ring: { id: 'ring_1', name: 'Nhẫn Đồng May Mắn', type: 'ring', icon: '💍', atk: 150, def: 80, rarity: 'uncommon' },
-                badge: { id: 'badge_1', name: 'Huân Chương Mùa Màng', type: 'badge', icon: '🌾', hp: 300, def: 60, rarity: 'uncommon' }
+                hat: { id: 'hat_1', name: 'Nón Lá Thần Nông', type: 'hat', icon: 'assets/icons/hat_nonla.svg', hp: 450, def: 120, rarity: 'rare' },
+                armor: { id: 'armor_1', name: 'Khăn Rằn Chiến Binh', type: 'armor', icon: 'assets/v21/item-khanran.png', hp: 800, def: 240, rarity: 'rare' },
+                weapon: { id: 'wpn_1', name: 'Cuốc Sắt Trấn Phái', type: 'weapon', icon: 'assets/v21/items/hoe.png', atk: 650, rarity: 'epic' },
+                boots: { id: 'boot_1', name: 'Gỗ Thần Phiêu Du', type: 'boots', icon: 'assets/v21/items/wood.png', spd: 80, def: 90, rarity: 'rare' },
+                gloves: { id: 'glov_1', name: 'Bộ Đồ Nghề Nông Dân', type: 'gloves', icon: 'assets/v21/items/tools.png', atk: 180, def: 70, rarity: 'uncommon' },
+                necklace: { id: 'neck_1', name: 'Ngọc Ấn Mùa Màng', type: 'necklace', icon: 'assets/v21/items/seal.png', hp: 500, atk: 120, rarity: 'rare' },
+                ring: { id: 'ring_1', name: 'Nanh Sói May Mắn', type: 'ring', icon: 'assets/v21/items/fang.png', atk: 150, def: 80, rarity: 'uncommon' },
+                badge: { id: 'badge_1', name: 'Hạt Vàng Hoàng Kim', type: 'badge', icon: 'assets/v21/items/rice.png', hp: 300, def: 60, rarity: 'uncommon' }
             },
             inventoryCapacity: 100,
             inventory: [
-                { id: 'item_1', name: 'Nón sắt hiệp khách', cat: 'Trang Bị', count: 24, icon: '🪖', desc: 'Nón sắt của quân dịch thời loạn, tăng phòng thủ.', rarity: 'rare', def: 150 },
-                { id: 'item_2', name: 'Búp bê vải may mắn', cat: 'Vật Phẩm', count: 53, icon: '🎎', desc: 'Búp bê dân gian đem lại may mắn cho vụ mùa.', rarity: 'uncommon' },
-                { id: 'item_3', name: 'Tô bún riêu cua đồng', cat: 'Vật Phẩm', count: 53, icon: '🍜', desc: 'Đặc sản đồng quê, hồi 600 HP lập tức.', rarity: 'uncommon', heal: 600 },
-                { id: 'item_4', name: 'Hạt giống lúa nếp thần', cat: 'Vật Phẩm', count: 8, icon: '🌾', desc: 'Hạt lúa nếp cái hoa vàng thần kỳ gieo ở ruộng lúa.', rarity: 'rare', plantable: true, seedType: 'rice' },
-                { id: 'item_5', name: 'Áo giáp da hổ', cat: 'Trang Bị', count: 12, icon: '🦺', desc: 'Giáp da thú săn bắn ở rừng sâu, tăng 220 phòng thủ.', rarity: 'rare', def: 220 },
-                { id: 'item_6', name: 'Cỏ thơm tiên thảo', cat: 'Vật Phẩm', count: 12, icon: '🌿', desc: 'Cây thuốc quý dùng bào chế đan dược tại Xưởng.', rarity: 'rare' },
-                { id: 'item_7', name: 'Hồng ngọc thần bí', cat: 'Ngọc', count: 5, icon: '💎', desc: 'Ngọc quý chứa năng lượng hỏa, dùng rèn trang bị.', rarity: 'epic' },
-                { id: 'item_8', name: 'Bình thể lực đại', cat: 'Vật Phẩm', count: 15, icon: '🧪', desc: 'Hồi phục 50 điểm Thể Lực ngay tức khắc.', rarity: 'rare', restoreEnergy: 50 },
-                { id: 'item_9', name: 'Bí kíp Thần Nông Kinh', cat: 'Khác', count: 10, icon: '📜', desc: 'Mật tịch võ công cổ truyền ghi chép bí thuật làm nông.', rarity: 'legendary' },
-                { id: 'item_10', name: 'Củ lạc hoàng kim', cat: 'Vật Phẩm', count: 3, icon: '🥜', desc: 'Thức ăn khoái khẩu của Pet Tiểu Chuột, tăng 500 EXP Pet.', rarity: 'rare', petExp: 500 },
-                { id: 'item_11', name: 'Đá nâng cấp xanh', cat: 'Ngọc', count: 24, icon: '💠', desc: 'Đá cường hóa trang bị và kỹ năng thần bí.', rarity: 'rare' },
-                { id: 'item_12', name: 'Lọ độc xà ngâm', cat: 'Vật Phẩm', count: 6, icon: '🍶', desc: 'Độc dược chiết xuất từ nhện rừng, dùng tẩm bẫy săn.', rarity: 'uncommon' },
-                { id: 'item_13', name: 'Hạt giống bắp ngọt', cat: 'Vật Phẩm', count: 15, icon: '🌽', desc: 'Hạt giống bắp cho năng suất cao, bán được nhiều Vàng.', rarity: 'uncommon', plantable: true, seedType: 'corn' },
-                { id: 'item_14', name: 'Cung tiễn săn bắn', cat: 'Trang Bị', count: 1, icon: '🏹', desc: 'Cung săn thú gia truyền bằng gỗ lim dẻo dai.', rarity: 'rare', atk: 280 },
-                { id: 'item_15', name: 'Thỏi vàng nguyên bảo', cat: 'Khác', count: 8, icon: '🪙', desc: 'Bán tại Chợ nhận ngay 10.000 Vàng mỗi thỏi.', rarity: 'epic', sellGold: 10000 },
-                { id: 'item_16', name: 'Bình Máu Siêu Cấp', cat: 'Vật Phẩm', count: 20, icon: '🩸', desc: 'Hồi phục 1.500 HP cho nhân vật.', rarity: 'rare', heal: 1500 },
-                { id: 'item_17', name: 'Gỗ lim xây dựng', cat: 'Vật Phẩm', count: 35, icon: '🪵', desc: 'Gỗ xẻ từ rừng để nâng cấp Nhà Chính và Xưởng.', rarity: 'uncommon' },
-                { id: 'item_18', name: 'Khoáng thạch sắt', cat: 'Vật Phẩm', count: 42, icon: '🪨', desc: 'Quặng sắt thô dùng đúc cuốc và vũ khí.', rarity: 'uncommon' },
-                { id: 'item_19', name: 'Lông gà thần thoại', cat: 'Khác', count: 7, icon: '🪶', desc: 'Lông rơi từ Gà Trống Thần, tăng may mắn khi quay thưởng.', rarity: 'legendary' },
-                { id: 'item_20', name: 'Bánh chưng truyền thống', cat: 'Vật Phẩm', count: 10, icon: '🍱', desc: 'Hồi phục toàn bộ HP và Thể Lực.', rarity: 'epic', healFull: true },
-                { id: 'item_21', name: 'Nhẫn Bạc Trinh Sát', cat: 'Trang Bị', count: 1, icon: '💍', desc: 'Tăng 90 công và 40 tốc độ.', rarity: 'rare', atk: 90, spd: 40 },
-                { id: 'item_22', name: 'Cá chép sông Hồng', cat: 'Vật Phẩm', count: 18, icon: '🐟', desc: 'Cá tươi câu dưới đầm sen, nguyên liệu nấu nướng.', rarity: 'common' },
-                { id: 'item_23', name: 'Trà sen Bách Diệp', cat: 'Vật Phẩm', count: 14, icon: '🍵', desc: 'Thư giãn tâm trí, tăng 10% sát thương trong 5 phút.', rarity: 'rare' },
-                { id: 'item_24', name: 'Lá chuối tươi', cat: 'Vật Phẩm', count: 60, icon: '🍃', desc: 'Vật liệu gói bánh và làm mui che ruộng.', rarity: 'common' },
-                { id: 'item_25', name: 'Đá Kim Cương Tinh Khiết', cat: 'Ngọc', count: 10, icon: '💎', desc: 'Ngọc đổi được 100 Kim Cương.', rarity: 'legendary', diaVal: 100 },
-                { id: 'item_26', name: 'Đao Phủ Sơn Tặc', cat: 'Trang Bị', count: 1, icon: '🗡️', desc: 'Vũ khí đoạt được từ thổ phỉ, lực công phá mạnh mẽ.', rarity: 'rare', atk: 350 },
-                { id: 'item_27', name: 'Giày Da Hươu Rừng', cat: 'Trang Bị', count: 1, icon: '🥾', desc: 'Tăng 60 tốc độ và 80 phòng thủ.', rarity: 'rare', spd: 60, def: 80 },
-                { id: 'item_28', name: 'Rương Thần Bí Nông Dân', cat: 'Khác', count: 2, icon: '🎁', desc: 'Mở ra cơ hội nhận vũ khí Sử Thi và hàng vạn Vàng.', rarity: 'legendary', isChest: true }
+                { id: 'item_1', name: 'Nón lá Thần Nông', cat: 'Trang Bị', count: 24, icon: 'assets/icons/hat_nonla.svg', desc: 'Nón lá truyền thống che mưa nắng, tăng phòng thủ.', rarity: 'rare', def: 150 },
+                { id: 'item_2', name: 'Khăn rằn may mắn', cat: 'Vật Phẩm', count: 53, icon: 'assets/v21/item-khanran.png', desc: 'Khăn rằn Nam Bộ đem lại may mắn cho vụ mùa.', rarity: 'uncommon' },
+                { id: 'item_3', name: 'Bình sinh lực đại', cat: 'Vật Phẩm', count: 53, icon: 'assets/v21/items/potion.png', desc: 'Tiên dược đồng quê, hồi 600 HP lập tức.', rarity: 'uncommon', heal: 600 },
+                { id: 'item_4', name: 'Hạt giống lúa nếp thần', cat: 'Vật Phẩm', count: 8, icon: 'assets/v21/items/seed.png', desc: 'Hạt lúa nếp cái hoa vàng thần kỳ gieo ở ruộng lúa.', rarity: 'rare', plantable: true, seedType: 'rice' },
+                { id: 'item_5', name: 'Lưỡi kiếm cổ phong', cat: 'Trang Bị', count: 12, icon: 'assets/v21/items/blade.png', desc: 'Lưỡi kiếm rèn từ thép cổ, tăng 220 sát thương.', rarity: 'rare', atk: 220 },
+                { id: 'item_6', name: 'Gỗ lim xẻ thần bí', cat: 'Vật Phẩm', count: 12, icon: 'assets/v21/items/wood.png', desc: 'Gỗ quý dùng chế tạo nông cụ và nâng cấp kiến trúc.', rarity: 'rare' },
+                { id: 'item_7', name: 'Hồng ngọc thần bí', cat: 'Ngọc', count: 5, icon: 'assets/icons/gem_ruby.svg', desc: 'Ngọc quý chứa năng lượng hỏa, dùng rèn trang bị.', rarity: 'epic' },
+                { id: 'item_8', name: 'Bình thể lực Thần Nông', cat: 'Vật Phẩm', count: 15, icon: 'assets/v21/items/mana_potion.png', desc: 'Hồi phục 50 điểm Thể Lực ngay tức khắc.', rarity: 'rare', restoreEnergy: 50 },
+                { id: 'item_9', name: 'Bí kíp Thần Tiễn Thuật', cat: 'Khác', count: 10, icon: 'assets/v21/skills/archer/archer_skill_book.png', desc: 'Mật tịch võ công cổ truyền ghi chép bí thuật bách bộ xuyên dương.', rarity: 'legendary' },
+                { id: 'item_10', name: 'Nanh sói dũng mãnh', cat: 'Vật Phẩm', count: 3, icon: 'assets/v21/items/fang.png', desc: 'Nanh dũng mãnh của sói hoang rừng sâu, tăng 500 EXP Pet.', rarity: 'rare', petExp: 500 },
+                { id: 'item_11', name: 'Đá nâng cấp lam ngọc', cat: 'Ngọc', count: 24, icon: 'assets/icons/gem_stone.svg', desc: 'Đá cường hóa trang bị và kỹ năng thần bí.', rarity: 'rare' },
+                { id: 'item_12', name: 'Lọ tiên dược chữa trị', cat: 'Vật Phẩm', count: 6, icon: 'assets/v21/items/potion.png', desc: 'Dược thảo ngâm hồi phục sinh lực thần tốc.', rarity: 'uncommon' },
+                { id: 'item_13', name: 'Hạt bắp giống vàng', cat: 'Vật Phẩm', count: 15, icon: 'assets/icons/seed_corn.svg', desc: 'Hạt giống bắp cho năng suất cao, bán được nhiều Vàng.', rarity: 'uncommon', plantable: true, seedType: 'corn' },
+                { id: 'item_14', name: 'Cung tiễn săn bắn', cat: 'Trang Bị', count: 1, icon: 'assets/icons/weapon_bow.svg', desc: 'Cung săn thú gia truyền bằng gỗ lim dẻo dai.', rarity: 'rare', atk: 280 },
+                { id: 'item_15', name: 'Cuốc sắt trấn phái', cat: 'Trang Bị', count: 8, icon: 'assets/v21/items/hoe.png', desc: 'Cuốc sắt gia truyền rèn từ quặng thép tinh xảo.', rarity: 'epic', atk: 350 },
+                { id: 'item_16', name: 'Bình Thần Dược Hồi Máu', cat: 'Vật Phẩm', count: 20, icon: 'assets/v21/items/potion.png', desc: 'Hồi phục 1.500 HP cho nhân vật.', rarity: 'rare', heal: 1500 },
+                { id: 'item_17', name: 'Gỗ lim xây dựng', cat: 'Vật Phẩm', count: 35, icon: 'assets/v21/items/wood.png', desc: 'Gỗ xẻ từ rừng để nâng cấp Nhà Chính và Xưởng.', rarity: 'uncommon' },
+                { id: 'item_18', name: 'Nông cụ Thần Nông', cat: 'Vật Phẩm', count: 42, icon: 'assets/v21/item-farmtools.png', desc: 'Bộ đồ nghề cày cuốc thu hoạch nông sản siêu tốc.', rarity: 'uncommon' },
+                { id: 'item_19', name: 'Ngọc ấn làng Thạnh Khê', cat: 'Khác', count: 7, icon: 'assets/v21/items/seal.png', desc: 'Ngọc ấn tôn vinh nông dân xuất sắc thời loạn.', rarity: 'legendary' },
+                { id: 'item_20', name: 'Bó lúa nếp hoàng kim', cat: 'Vật Phẩm', count: 10, icon: 'assets/v21/items/rice.png', desc: 'Lúa nếp nương thu hoạch vụ mùa bội thu, hồi đầy HP & Thể Lực.', rarity: 'epic', healFull: true },
+                { id: 'item_21', name: 'Hạt giống vụ mùa', cat: 'Vật Phẩm', count: 12, icon: 'assets/v21/items/seed.png', desc: 'Hạt giống tuyển chọn gieo trồng trên đất tơi xốp.', rarity: 'rare', plantable: true, seedType: 'rice' },
+                { id: 'item_22', name: 'Bí kíp Kiếm Sĩ Thần Oai', cat: 'Khác', count: 18, icon: 'assets/v21/skills/swordsman/swordsman_skill_book.png', desc: 'Mật tịch kiếm pháp hộ thân thời loạn lạc.', rarity: 'common' },
+                { id: 'item_23', name: 'Nước thần hồi mana', cat: 'Vật Phẩm', count: 14, icon: 'assets/v21/items/mana_potion.png', desc: 'Nước suối nguồn tinh khiết phục hồi thể lực tức thì.', rarity: 'rare' },
+                { id: 'item_24', name: 'Bí kíp Thích Khách U Ảnh', cat: 'Khác', count: 60, icon: 'assets/v21/skills/assassin/assassin_skill_book.png', desc: 'Bí kíp thân pháp di chuyển như bóng ma.', rarity: 'common' },
+                { id: 'item_25', name: 'Đá Hồng Ngọc Tinh Khiết', cat: 'Ngọc', count: 10, icon: 'assets/icons/gem_ruby.svg', desc: 'Ngọc đổi được 100 Kim Cương.', rarity: 'legendary', diaVal: 100 },
+                { id: 'item_26', name: 'Đao Phủ Sơn Tặc', cat: 'Trang Bị', count: 1, icon: 'assets/v21/items/blade.png', desc: 'Vũ khí đoạt được từ thổ phỉ, lực công phá mạnh mẽ.', rarity: 'rare', atk: 350 },
+                { id: 'item_27', name: 'Dụng cụ sửa chữa', cat: 'Vật Phẩm', count: 1, icon: 'assets/v21/items/tools.png', desc: 'Tăng tốc độ sửa chữa nông trại và cạm bẫy.', rarity: 'rare', spd: 60, def: 80 },
+                { id: 'item_28', name: 'Rương Thần Bí Nông Dân', cat: 'Khác', count: 2, icon: 'assets/icons/chest_gold.svg', desc: 'Mở ra cơ hội nhận vũ khí Sử Thi và hàng vạn Vàng.', rarity: 'legendary', isChest: true }
             ],
             skills: {
-                danh_thuong: { id: 'danh_thuong', name: 'Đánh Thường', level: 10, icon: '🗡️', desc: 'Chém liên hoàn bằng cuốc/kiếm gây 100% sát thương.', damagePercent: 100, cd: 0, lastUsed: 0 },
-                cung_tien: { id: 'cung_tien', name: 'Cung Tiễn', level: 5, icon: '🏹', desc: 'Tấn công mục tiêu bằng mũi tên thần, gây sát thương 180%.', damagePercent: 180, cd: 5, lastUsed: 0 },
-                bay: { id: 'bay', name: 'Bẫy', level: 3, icon: '🪤', desc: 'Đặt bẫy thú gai nhọn trói chân quái vật 3 giây và gây 140% sát thương.', damagePercent: 140, cd: 8, lastUsed: 0 },
-                tang_toc: { id: 'tang_toc', name: 'Tăng Tốc', level: 4, icon: '👟', desc: 'Tăng 80% tốc độ di chuyển trong 4 giây và tạo tàn ảnh né đòn.', damagePercent: 0, cd: 12, lastUsed: 0 }
+                danh_thuong: { id: 'danh_thuong', name: 'Đánh Thường', level: 10, icon: 'assets/v21/skills/farmer/farmer_basic_attack.png', desc: 'Chém liên hoàn bằng cuốc/kiếm gây 100% sát thương.', damagePercent: 100, cd: 0, lastUsed: 0 },
+                cung_tien: { id: 'cung_tien', name: 'Cung Tiễn', level: 5, icon: 'assets/v21/skills/archer/archer_multi_arrow.png', desc: 'Tấn công mục tiêu bằng mưa tên thần, gây sát thương 180%.', damagePercent: 180, cd: 5, lastUsed: 0 },
+                bay: { id: 'bay', name: 'Bẫy Gai', level: 3, icon: 'assets/v21/skills/swordsman/swordsman_iron_wall.png', desc: 'Đặt bẫy thú gai sắt trói chân quái vật 3 giây và gây 140% sát thương.', damagePercent: 140, cd: 8, lastUsed: 0 },
+                tang_toc: { id: 'tang_toc', name: 'Tăng Tốc', level: 4, icon: 'assets/v21/skills/archer/archer_wind_step.png', desc: 'Kích hoạt Thần Hành Bộ tăng 80% tốc độ di chuyển trong 4 giây.', damagePercent: 0, cd: 12, lastUsed: 0 }
             },
             disciples: [
                 {
@@ -100,11 +100,11 @@ export class GameState {
                     mode: 'follow', // 'follow' or 'attack'
                     autoAttack: true,
                     unlocked: true,
-                    avatar: 'disciple_girl.png'
+                    avatar: 'assets/v21/characters/swordsman/female/portrait.png'
                 },
                 {
                     id: 'kiemkhach',
-                    name: 'Đệ Tử 2: Thiếu Niên Kiếm Khách',
+                    name: 'Đệ Tử 2: Thiếu Niên Thần Tiễn',
                     level: 15,
                     stars: 3,
                     hp: 2400,
@@ -115,11 +115,11 @@ export class GameState {
                     mode: 'standby',
                     autoAttack: false,
                     unlocked: true,
-                    avatar: 'farmer_hero.png'
+                    avatar: 'assets/v21/characters/archer/male/portrait.png'
                 },
                 {
                     id: 'de_tu_3',
-                    name: 'Đệ Tử 3: Thần Nông Trưởng Lão',
+                    name: 'Đệ Tử 3: Hùng Vương Trưởng Lão',
                     level: 1,
                     stars: 5,
                     hp: 4500,
@@ -130,6 +130,7 @@ export class GameState {
                     mode: 'locked',
                     autoAttack: false,
                     unlocked: false,
+                    avatar: 'assets/v21/npc-hungking.png',
                     unlockReq: 'Cần đạt Cấp 25'
                 }
             ],
@@ -137,7 +138,7 @@ export class GameState {
             pets: [
                 {
                     id: 'tieuchuot',
-                    name: 'Tiểu Chuột',
+                    name: 'Khuyển Bảo (Chó Săn)',
                     level: 10,
                     maxLevel: 100,
                     hpBonus: 3000,
@@ -145,11 +146,11 @@ export class GameState {
                     defenseBonus: 180,
                     speedBonus: 50,
                     active: true,
-                    avatar: 'pet_hamster.png'
+                    avatar: 'assets/v21/pets/dog/idle.png'
                 },
                 {
                     id: 'gatrong',
-                    name: 'Gà Trống Thần',
+                    name: 'Ngưu Ma (Trâu Vàng)',
                     level: 5,
                     maxLevel: 100,
                     hpBonus: 1800,
@@ -157,11 +158,11 @@ export class GameState {
                     defenseBonus: 110,
                     speedBonus: 30,
                     active: false,
-                    avatar: 'rooster_pet.png'
+                    avatar: 'assets/v21/pets/buffalo/idle.png'
                 },
                 {
                     id: 'heorung',
-                    name: 'Heo Rừng Dũng Mãnh',
+                    name: 'Chim Lạc Thần Long',
                     level: 1,
                     maxLevel: 100,
                     hpBonus: 2500,
@@ -170,20 +171,21 @@ export class GameState {
                     speedBonus: 20,
                     active: false,
                     locked: true,
-                    unlockCost: 1000
+                    unlockCost: 1000,
+                    avatar: 'assets/v21/pets/lacbird/idle.png'
                 }
             ],
             activePetId: 'tieuchuot',
             checkIn: {
                 claimedDays: [1],
                 rewards: [
-                    { day: 1, text: '50.000 Vàng', type: 'gold', val: 50000, icon: '🪙' },
-                    { day: 2, text: '20.000 Exp', type: 'exp', val: 20000, icon: '⭐' },
-                    { day: 3, text: 'Bình Máu x10', type: 'potion', val: 10, icon: '🩸' },
-                    { day: 4, text: '10 Kim Cương', type: 'diamond', val: 10, icon: '💎' },
-                    { day: 5, text: '20.000 Vàng', type: 'gold', val: 20000, icon: '💰' },
-                    { day: 6, text: 'Đá Nâng Cấp x30', type: 'stone', val: 30, icon: '💠' },
-                    { day: 7, text: 'Rương Thần x1', type: 'chest', val: 1, icon: '🎁' }
+                    { day: 1, text: '50.000 Vàng', type: 'gold', val: 50000, icon: 'assets/v21/items/rice.png' },
+                    { day: 2, text: '20.000 Exp', type: 'exp', val: 20000, icon: 'assets/icons/gem_stone.svg' },
+                    { day: 3, text: 'Bình Máu x10', type: 'potion', val: 10, icon: 'assets/v21/items/potion.png' },
+                    { day: 4, text: '10 Kim Cương', type: 'diamond', val: 10, icon: 'assets/icons/gem_ruby.svg' },
+                    { day: 5, text: '20.000 Vàng', type: 'gold', val: 20000, icon: 'assets/v21/items/rice.png' },
+                    { day: 6, text: 'Đá Nâng Cấp x30', type: 'stone', val: 30, icon: 'assets/icons/gem_stone.svg' },
+                    { day: 7, text: 'Rương Thần x1', type: 'chest', val: 1, icon: 'assets/icons/chest_gold.svg' }
                 ],
                 currentDay: 2,
                 canClaimToday: true
@@ -191,8 +193,8 @@ export class GameState {
             quests: [
                 {
                     id: 'q1',
-                    title: 'Trồng lúa 01',
-                    icon: '🌾',
+                    title: 'Trồng lúa Thần Nông',
+                    icon: 'assets/v21/ui/icons/farm.png',
                     current: 0,
                     target: 10,
                     rewardGold: 15000,
@@ -202,8 +204,8 @@ export class GameState {
                 },
                 {
                     id: 'q2',
-                    title: 'Hoàn thành nhiệm vụ',
-                    icon: '📜',
+                    title: 'Hoàn thành nhiệm vụ hiệp khách',
+                    icon: 'assets/v21/ui/icons/quest.png',
                     current: 0,
                     target: 3,
                     rewardGold: 20000,
@@ -213,8 +215,8 @@ export class GameState {
                 },
                 {
                     id: 'q3',
-                    title: 'Thu thập tài nguyên',
-                    icon: '🪵',
+                    title: 'Thu thập gỗ và khoáng thạch',
+                    icon: 'assets/v21/items/wood.png',
                     current: 0,
                     target: 5,
                     rewardGold: 12000,
@@ -376,10 +378,46 @@ export class GameState {
 
     load() {
         try {
-            const raw = localStorage.getItem(STORAGE_KEY);
+            const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('NONG_DAN_THOI_LOAN_SAVE_V1');
             if (raw) {
                 const parsed = JSON.parse(raw);
-                this.data = { ...this.getDefaultState(), ...parsed };
+                const defaults = this.getDefaultState();
+                this.data = { ...defaults, ...parsed };
+
+                // Auto-migrate legacy emoji icons to authentic asset paths
+                if (this.data.equipment) {
+                    Object.keys(defaults.equipment).forEach(k => {
+                        if (this.data.equipment[k] && (!this.data.equipment[k].icon || !this.data.equipment[k].icon.includes('/'))) {
+                            this.data.equipment[k].icon = defaults.equipment[k].icon;
+                        }
+                    });
+                }
+                if (this.data.skills) {
+                    Object.keys(defaults.skills).forEach(k => {
+                        if (this.data.skills[k] && (!this.data.skills[k].icon || !this.data.skills[k].icon.includes('/'))) {
+                            this.data.skills[k].icon = defaults.skills[k].icon;
+                        }
+                    });
+                }
+                if (this.data.inventory) {
+                    this.data.inventory.forEach(invItem => {
+                        const def = defaults.inventory.find(d => d.id === invItem.id || d.name === invItem.name);
+                        if (def) invItem.icon = def.icon;
+                    });
+                }
+                if (this.data.disciples) {
+                    this.data.disciples.forEach(d => {
+                        const def = defaults.disciples.find(x => x.id === d.id);
+                        if (def) d.avatar = def.avatar;
+                    });
+                }
+                if (this.data.pets) {
+                    this.data.pets.forEach(p => {
+                        const def = defaults.pets.find(x => x.id === p.id);
+                        if (def) p.avatar = def.avatar;
+                    });
+                }
+                this.save();
             }
         } catch (e) {
             console.warn('Load failed, using default state:', e);

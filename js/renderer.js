@@ -14,13 +14,16 @@ export class Renderer {
 
         // Preloaded Graphic Assets (Official Farmers-in-Chaotic-Times + Custom Vectors)
         this.assets = {
+            map: new Image(),
             farmerMale: new Image(),
             farmerFemale: new Image(),
             disciple: new Image(),
-            petHamster: new Image(),
             petDog: new Image(),
             petBuffalo: new Image(),
+            petLacbird: new Image(),
             wolf: new Image(),
+            fireHatchling: new Image(),
+            ironCopter: new Image(),
             boar: new Image(),
             crow: new Image(),
             spider: new Image(),
@@ -28,15 +31,21 @@ export class Renderer {
             trap: new Image(),
             hoe: new Image(),
             rice: new Image(),
-            potion: new Image()
+            seed: new Image(),
+            potion: new Image(),
+            manaPotion: new Image(),
+            gem: new Image()
         };
+        this.assets.map.src = 'assets/v21/map.png';
         this.assets.farmerMale.src = 'assets/v21/characters/farmer/male/idle.png';
         this.assets.farmerFemale.src = 'assets/v21/characters/farmer/female/idle.png';
-        this.assets.disciple.src = 'assets/images/sprite_disciple.svg';
-        this.assets.petHamster.src = 'assets/images/sprite_pet.svg';
+        this.assets.disciple.src = 'assets/v21/characters/swordsman/female/idle.png';
         this.assets.petDog.src = 'assets/v21/pets/dog/idle.png';
         this.assets.petBuffalo.src = 'assets/v21/pets/buffalo/idle.png';
+        this.assets.petLacbird.src = 'assets/v21/pets/lacbird/idle.png';
         this.assets.wolf.src = 'assets/v21/monsters/wolf/idle.png';
+        this.assets.fireHatchling.src = 'assets/v21/monsters/fire_hatchling.png';
+        this.assets.ironCopter.src = 'assets/v21/monsters/iron_copter.png';
         this.assets.boar.src = 'assets/icons/monster_boar.svg';
         this.assets.crow.src = 'assets/icons/monster_crow.svg';
         this.assets.spider.src = 'assets/icons/monster_spider.svg';
@@ -44,7 +53,10 @@ export class Renderer {
         this.assets.trap.src = 'assets/icons/trap_bear.svg';
         this.assets.hoe.src = 'assets/v21/items/hoe.png';
         this.assets.rice.src = 'assets/v21/items/rice.png';
+        this.assets.seed.src = 'assets/v21/items/seed.png';
         this.assets.potion.src = 'assets/v21/items/potion.png';
+        this.assets.manaPotion.src = 'assets/v21/items/mana_potion.png';
+        this.assets.gem.src = 'assets/icons/gem_ruby.svg';
 
         this.initCanvasSize();
         window.addEventListener('resize', () => this.initCanvasSize());
@@ -113,32 +125,37 @@ export class Renderer {
     }
 
     drawTerrain(ctx, world) {
-        // Base Grass
-        ctx.fillStyle = '#65a30d'; // vibrant lush green
-        ctx.fillRect(0, 0, world.width, world.height);
+        // Render authentic game map if loaded
+        if (this.assets.map && this.assets.map.complete && this.assets.map.naturalWidth > 0) {
+            ctx.drawImage(this.assets.map, 0, 0, world.width, world.height);
+        } else {
+            // Base Grass Fallback
+            ctx.fillStyle = '#65a30d'; // vibrant lush green
+            ctx.fillRect(0, 0, world.width, world.height);
 
-        // Soft terrain gradient & forest dark zone on right
-        const grad = ctx.createLinearGradient(1600, 0, world.width, 0);
-        grad.addColorStop(0, 'rgba(22, 101, 52, 0)');
-        grad.addColorStop(1, 'rgba(20, 83, 45, 0.45)');
-        ctx.fillStyle = grad;
-        ctx.fillRect(1600, 0, world.width - 1600, world.height);
+            // Soft terrain gradient & forest dark zone on right
+            const grad = ctx.createLinearGradient(1600, 0, world.width, 0);
+            grad.addColorStop(0, 'rgba(22, 101, 52, 0)');
+            grad.addColorStop(1, 'rgba(20, 83, 45, 0.45)');
+            ctx.fillStyle = grad;
+            ctx.fillRect(1600, 0, world.width - 1600, world.height);
 
-        // Village Dirt Paths (Connecting buildings and farmlands)
-        ctx.fillStyle = '#d97706';
-        ctx.strokeStyle = '#b45309';
-        ctx.lineWidth = 4;
+            // Village Dirt Paths (Connecting buildings and farmlands)
+            ctx.fillStyle = '#d97706';
+            ctx.strokeStyle = '#b45309';
+            ctx.lineWidth = 4;
 
-        // Main Horizontal Village Avenue
-        this.drawRoundedRect(ctx, 320, 480, 1260, 90, 20, '#d97706', '#b45309');
-        // North branch to houses
-        this.drawRoundedRect(ctx, 480, 430, 90, 80, 10, '#d97706', null);
-        this.drawRoundedRect(ctx, 860, 420, 80, 80, 10, '#d97706', null);
-        this.drawRoundedRect(ctx, 1260, 440, 90, 70, 10, '#d97706', null);
-        // South branch to Farmland & Pond
-        this.drawRoundedRect(ctx, 720, 560, 110, 220, 15, '#d97706', '#b45309');
-        // East path leading to Wild Forest
-        this.drawRoundedRect(ctx, 1500, 500, 350, 70, 15, '#c2410c', '#9a3412');
+            // Main Horizontal Village Avenue
+            this.drawRoundedRect(ctx, 320, 480, 1260, 90, 20, '#d97706', '#b45309');
+            // North branch to houses
+            this.drawRoundedRect(ctx, 480, 430, 90, 80, 10, '#d97706', null);
+            this.drawRoundedRect(ctx, 860, 420, 80, 80, 10, '#d97706', null);
+            this.drawRoundedRect(ctx, 1260, 440, 90, 70, 10, '#d97706', null);
+            // South branch to Farmland & Pond
+            this.drawRoundedRect(ctx, 720, 560, 110, 220, 15, '#d97706', '#b45309');
+            // East path leading to Wild Forest
+            this.drawRoundedRect(ctx, 1500, 500, 350, 70, 15, '#c2410c', '#9a3412');
+        }
 
         // Scenery elements
         world.scenery.forEach(item => {
@@ -377,18 +394,28 @@ export class Renderer {
             const cy = layout.y + layout.h / 2;
 
             if (status === 'empty') {
-                ctx.font = 'bold 13px sans-serif';
+                if (this.assets.seed && this.assets.seed.complete && this.assets.seed.naturalWidth > 0) {
+                    ctx.save();
+                    ctx.globalAlpha = 0.45;
+                    ctx.drawImage(this.assets.seed, cx - 14, cy - 22, 28, 28);
+                    ctx.restore();
+                }
+                ctx.font = 'bold 12px sans-serif';
                 ctx.fillStyle = '#fde68a';
                 ctx.textAlign = 'center';
-                ctx.fillText('🌱 Đất Trống', cx, cy - 4);
-                ctx.font = '11px sans-serif';
+                ctx.fillText('Đất Màu Mỡ', cx, cy + 12);
+                ctx.font = '10px sans-serif';
                 ctx.fillStyle = '#cbd5e1';
-                ctx.fillText('[Nhấn để Gieo Hạt]', cx, cy + 14);
+                ctx.fillText('[Gieo Hạt]', cx, cy + 24);
             } else if (status === 'growing') {
-                // Sprouts
-                ctx.font = '24px serif';
-                ctx.textAlign = 'center';
-                ctx.fillText('🌱 🌱 🌱', cx, cy + 2);
+                // Real Seed / Sprout Asset
+                if (this.assets.seed && this.assets.seed.complete && this.assets.seed.naturalWidth > 0) {
+                    ctx.drawImage(this.assets.seed, cx - 18, cy - 24, 36, 36);
+                } else {
+                    ctx.font = '24px serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('🌱', cx, cy + 2);
+                }
 
                 // Progress Bar
                 const elapsed = Date.now() - plot.plantTime;
@@ -403,10 +430,14 @@ export class Renderer {
                 ctx.fillStyle = '#ffffff';
                 ctx.fillText(`${Math.ceil((plot.growDuration - elapsed) / 1000)}s`, cx, layout.y + layout.h - 22);
             } else if (status === 'ready') {
-                // Golden ripe crops with sparkles!
-                ctx.font = '30px serif';
-                ctx.textAlign = 'center';
-                ctx.fillText(plot.crop === 'corn' ? '🌽 🌽 🌽' : '🌾 🌾 🌾', cx, cy + 5);
+                // Golden ripe crops with authentic rice asset!
+                if (this.assets.rice && this.assets.rice.complete && this.assets.rice.naturalWidth > 0) {
+                    ctx.drawImage(this.assets.rice, cx - 22, cy - 28, 44, 44);
+                } else {
+                    ctx.font = '30px serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('🌾', cx, cy + 5);
+                }
 
                 // Sparkling golden highlight badge
                 ctx.fillStyle = '#eab308';
@@ -615,9 +646,10 @@ export class Renderer {
         ctx.translate(px, py);
         if (pet.direction === -1) ctx.scale(-1, 1);
 
-        let petSprite = this.assets.petHamster;
-        if (pet.data.id === 'gatrong' || pet.data.id === 'dog') petSprite = this.assets.petDog;
-        else if (pet.data.id === 'heorung' || pet.data.id === 'buffalo') petSprite = this.assets.petBuffalo;
+        let petSprite = this.assets.petDog;
+        if (pet.data.id === 'gatrong' || pet.data.id === 'buffalo') petSprite = this.assets.petBuffalo;
+        else if (pet.data.id === 'chimlac' || pet.data.id === 'lacbird' || pet.data.id === 'heorung') petSprite = this.assets.petLacbird;
+        else if (pet.data.id === 'tieuchuot' || pet.data.id === 'dog') petSprite = this.assets.petDog;
 
         if (petSprite && petSprite.complete && petSprite.naturalWidth > 0) {
             ctx.drawImage(petSprite, -24, -28, 48, 52);
@@ -690,6 +722,8 @@ export class Renderer {
         // Enemy Icon / Sprite Representation
         let enemyImg = null;
         if (enemy.type === 'wolf') enemyImg = this.assets.wolf;
+        else if (enemy.type === 'fire_hatchling') enemyImg = this.assets.fireHatchling;
+        else if (enemy.type === 'iron_copter') enemyImg = this.assets.ironCopter;
         else if (enemy.type === 'heorung') enemyImg = this.assets.boar;
         else if (enemy.type === 'quaden') enemyImg = this.assets.crow;
         else if (enemy.type === 'nhen') enemyImg = this.assets.spider;
@@ -761,9 +795,15 @@ export class Renderer {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
             ctx.fill();
 
-            ctx.font = '22px serif';
-            ctx.textAlign = 'center';
-            ctx.fillText(d.type === 'diamond' ? '💎' : '🪙', d.x, dy);
+            if (d.type === 'diamond' && this.assets.gem && this.assets.gem.complete && this.assets.gem.naturalWidth > 0) {
+                ctx.drawImage(this.assets.gem, d.x - 14, dy - 14, 28, 28);
+            } else if (this.assets.rice && this.assets.rice.complete && this.assets.rice.naturalWidth > 0) {
+                ctx.drawImage(this.assets.rice, d.x - 14, dy - 14, 28, 28);
+            } else {
+                ctx.font = '22px serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(d.type === 'diamond' ? '💎' : '🪙', d.x, dy);
+            }
         });
         ctx.restore();
     }

@@ -77,6 +77,10 @@ class Game {
         list.push(new Enemy('thophi', 2150, 320));
         list.push(new Enemy('thophi', 2340, 600));
 
+        // Hỏa Tinh & Thiết Giáp (Rare Monsters from V21)
+        list.push(new Enemy('fire_hatchling', 2000, 480));
+        list.push(new Enemy('iron_copter', 2250, 920));
+
         return list;
     }
 

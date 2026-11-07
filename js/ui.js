@@ -19,6 +19,14 @@ export class UIManager {
         this.initEventListeners();
     }
 
+    renderIconHtml(icon, className = 'icon-img', fallback = '') {
+        if (!icon) return fallback ? `<span class="${className}-fallback">${fallback}</span>` : '';
+        if (typeof icon === 'string' && (icon.includes('/') || icon.endsWith('.png') || icon.endsWith('.svg') || icon.endsWith('.jpg') || icon.endsWith('.webp'))) {
+            return `<img src="${icon}" class="${className}" alt="icon" onerror="this.style.display='none'">`;
+        }
+        return `<span class="${className}-emoji">${icon}</span>`;
+    }
+
     initEventListeners() {
         // Title Screen Buttons
         document.getElementById('btn-play')?.addEventListener('click', () => {
@@ -146,6 +154,11 @@ export class UIManager {
         });
 
         // HUD Quick Feature Buttons
+        document.getElementById('hud-btn-inventory')?.addEventListener('click', () => {
+            sound.playClick();
+            this.showModal('modal-inventory');
+        });
+
         document.getElementById('hud-btn-events')?.addEventListener('click', () => {
             sound.playClick();
             this.showModal('modal-events');
@@ -399,7 +412,7 @@ export class UIManager {
                 const div = document.createElement('div');
                 div.className = `equip-slot-box ${item ? 'equipped' : 'empty'}`;
                 div.innerHTML = `
-                    <div class="slot-icon">${item ? item.icon : '➕'}</div>
+                    <div class="slot-icon">${this.renderIconHtml(item ? item.icon : '', 'slot-icon-img', '➕')}</div>
                     <div class="slot-label">${item ? item.name : slot.toUpperCase()}</div>
                 `;
                 div.addEventListener('click', () => {
@@ -436,7 +449,7 @@ export class UIManager {
 
             if (item) {
                 slot.innerHTML = `
-                    <div class="inv-item-icon">${item.icon}</div>
+                    <div class="inv-item-icon">${this.renderIconHtml(item.icon, 'inv-item-icon-img')}</div>
                     <span class="inv-item-count">${item.count > 1 ? item.count : ''}</span>
                 `;
                 slot.addEventListener('click', () => {
@@ -455,7 +468,7 @@ export class UIManager {
         if (!detailPanel) return;
 
         detailPanel.classList.remove('hidden');
-        document.getElementById('detail-item-icon').innerText = item.icon;
+        document.getElementById('detail-item-icon').innerHTML = this.renderIconHtml(item.icon, 'detail-item-icon-img');
         document.getElementById('detail-item-name').innerText = item.name;
         document.getElementById('detail-item-desc').innerText = item.desc || 'Vật phẩm nông nghiệp quý giá.';
 
@@ -512,7 +525,7 @@ export class UIManager {
             const item = document.createElement('div');
             item.className = `skill-list-item ${this.selectedSkillKey === key ? 'active' : ''}`;
             item.innerHTML = `
-                <div class="skill-item-icon">${skill.icon}</div>
+                <div class="skill-item-icon">${this.renderIconHtml(skill.icon, 'skill-item-icon-img')}</div>
                 <div class="skill-item-info">
                     <div class="skill-item-name">${skill.name}</div>
                     <div class="skill-item-lvl">Cấp: ${skill.level}</div>
@@ -529,7 +542,7 @@ export class UIManager {
         // Detail preview
         const cur = state.data.skills[this.selectedSkillKey];
         if (cur) {
-            document.getElementById('skill-detail-icon').innerText = cur.icon;
+            document.getElementById('skill-detail-icon').innerHTML = this.renderIconHtml(cur.icon, 'skill-detail-icon-img');
             document.getElementById('skill-detail-name').innerText = cur.name;
             document.getElementById('skill-detail-level').innerText = `Cấp: ${cur.level}`;
             document.getElementById('skill-detail-desc').innerText = cur.desc;
@@ -567,7 +580,7 @@ export class UIManager {
             const item = document.createElement('div');
             item.className = `disciple-list-box ${this.selectedDiscipleId === d.id ? 'active' : ''} ${d.unlocked ? '' : 'locked'}`;
             item.innerHTML = `
-                <div class="disciple-avatar-icon">${d.unlocked ? '🥋' : '🔒'}</div>
+                <div class="disciple-avatar-icon">${d.unlocked ? this.renderIconHtml(d.avatar, 'disciple-avatar-img') : '🔒'}</div>
                 <div class="disciple-box-info">
                     <div class="disciple-name">${d.name}</div>
                     <div class="disciple-lvl">${d.unlocked ? `Cấp: ${d.level}` : (d.unlockReq || 'Khóa')}</div>
@@ -616,7 +629,7 @@ export class UIManager {
             const item = document.createElement('div');
             item.className = `pet-list-box ${this.selectedPetId === pet.id ? 'active' : ''} ${pet.locked ? 'locked' : ''}`;
             item.innerHTML = `
-                <div class="pet-avatar-icon">${pet.id === 'tieuchuot' ? '🐹' : (pet.id === 'gatrong' ? '🐓' : '🐗')}</div>
+                <div class="pet-avatar-icon">${this.renderIconHtml(pet.avatar, 'pet-avatar-img')}</div>
                 <div class="pet-box-info">
                     <div class="pet-name">${pet.name}</div>
                     <div class="pet-lvl">${pet.locked ? 'Khóa' : `Cấp: ${pet.level}/100`}</div>
@@ -683,7 +696,7 @@ export class UIManager {
             div.className = `checkin-day-card ${isClaimed ? 'claimed' : ''} ${isToday ? 'today' : ''}`;
             div.innerHTML = `
                 <div class="day-title">Ngày ${r.day}</div>
-                <div class="day-icon">${r.icon}</div>
+                <div class="day-icon">${this.renderIconHtml(r.icon, 'checkin-day-img')}</div>
                 <div class="day-reward">${r.text}</div>
                 ${isClaimed ? '<div class="day-badge-claimed">✔ Đã nhận</div>' : ''}
             `;
@@ -708,9 +721,9 @@ export class UIManager {
             if (r.type === 'gold') state.addGold(r.val);
             if (r.type === 'diamond') state.addDiamonds(r.val);
             if (r.type === 'exp') state.addExp(r.val);
-            if (r.type === 'potion') state.addItem({ name: 'Bình Máu Siêu Cấp', cat: 'Vật Phẩm', count: r.val, icon: '🩸', heal: 1500 });
-            if (r.type === 'stone') state.addItem({ name: 'Đá nâng cấp xanh', cat: 'Ngọc', count: r.val, icon: '💠' });
-            if (r.type === 'chest') state.addItem({ name: 'Rương Thần Nông', cat: 'Khác', count: 1, icon: '🎁', isChest: true });
+            if (r.type === 'potion') state.addItem({ name: 'Bình Máu Siêu Cấp', cat: 'Vật Phẩm', count: r.val, icon: 'assets/v21/items/potion.png', heal: 1500 });
+            if (r.type === 'stone') state.addItem({ name: 'Đá nâng cấp xanh', cat: 'Ngọc', count: r.val, icon: 'assets/icons/gem_stone.svg' });
+            if (r.type === 'chest') state.addItem({ name: 'Rương Thần Nông', cat: 'Khác', count: 1, icon: 'assets/icons/chest_gold.svg', isChest: true });
 
             state.data.checkIn.claimedDays.push(curDay);
             state.data.checkIn.canClaimToday = false;
@@ -732,7 +745,7 @@ export class UIManager {
             const item = document.createElement('div');
             item.className = `quest-card ${isCompleted ? 'completed' : ''}`;
             item.innerHTML = `
-                <div class="quest-icon">${q.icon}</div>
+                <div class="quest-icon">${this.renderIconHtml(q.icon, 'quest-icon-img')}</div>
                 <div class="quest-info">
                     <div class="quest-title">${q.title}</div>
                     <div class="quest-progress-bar">
@@ -859,22 +872,22 @@ export class UIManager {
 
         const shopCatalog = {
             'Đặc Biệt': [
-                { name: 'Gói Nông Dân', price: 500, currency: 'diamond', icon: '🌾', desc: 'Chứa 100k Vàng, 10 Hạt giống lúa nếp thần, 5 Bình máu.', yieldItem: { name: 'Gói Nông Dân', cat: 'Khác', count: 1, icon: '🌾' } },
-                { name: 'Gói Nâng Cấp', price: 200, currency: 'diamond', icon: '💠', desc: 'Chứa 50 Đá nâng cấp xanh và 20k Exp bí kíp.', yieldItem: { name: 'Đá nâng cấp xanh', cat: 'Ngọc', count: 50, icon: '💠' } },
-                { name: 'Gói Đặc Biệt', price: 1000, currency: 'diamond', icon: '🎁', desc: 'Nhận ngay Cuốc Hoàng Kim và 300k Vàng!', yieldItem: { name: 'Cuốc Hoàng Kim Thần Thoại', cat: 'Trang Bị', count: 1, icon: '⛏️', atk: 1200, rarity: 'legendary' } }
+                { name: 'Gói Nông Dân', price: 500, currency: 'diamond', icon: 'assets/v21/items/rice.png', desc: 'Chứa 100k Vàng, 10 Hạt giống lúa nếp thần, 5 Bình máu.', yieldItem: { name: 'Gói Nông Dân', cat: 'Khác', count: 1, icon: 'assets/v21/items/rice.png' } },
+                { name: 'Gói Nâng Cấp', price: 200, currency: 'diamond', icon: 'assets/icons/gem_stone.svg', desc: 'Chứa 50 Đá nâng cấp xanh và 20k Exp bí kíp.', yieldItem: { name: 'Đá nâng cấp xanh', cat: 'Ngọc', count: 50, icon: 'assets/icons/gem_stone.svg' } },
+                { name: 'Gói Đặc Biệt', price: 1000, currency: 'diamond', icon: 'assets/icons/chest_gold.svg', desc: 'Nhận ngay Cuốc Hoàng Kim và 300k Vàng!', yieldItem: { name: 'Cuốc Hoàng Kim Thần Thoại', cat: 'Trang Bị', count: 1, icon: 'assets/v21/items/hoe.png', atk: 1200, rarity: 'legendary' } }
             ],
             'Vật Phẩm': [
-                { name: 'Hạt Giống Lúa Nếp', price: 1000, currency: 'gold', icon: '🌾', yieldItem: { name: 'Hạt giống lúa nếp thần', cat: 'Vật Phẩm', count: 5, icon: '🌾', plantable: true, seedType: 'rice' } },
-                { name: 'Hạt Giống Bắp Ngọt', price: 1500, currency: 'gold', icon: '🌽', yieldItem: { name: 'Hạt giống bắp ngọt', cat: 'Vật Phẩm', count: 5, icon: '🌽', plantable: true, seedType: 'corn' } },
-                { name: 'Bình Máu Đại', price: 800, currency: 'gold', icon: '🩸', yieldItem: { name: 'Bình Máu Siêu Cấp', cat: 'Vật Phẩm', count: 5, icon: '🩸', heal: 1500 } }
+                { name: 'Hạt Giống Lúa Nếp', price: 1000, currency: 'gold', icon: 'assets/v21/items/seed.png', yieldItem: { name: 'Hạt giống lúa nếp thần', cat: 'Vật Phẩm', count: 5, icon: 'assets/v21/items/seed.png', plantable: true, seedType: 'rice' } },
+                { name: 'Hạt Giống Bắp Ngọt', price: 1500, currency: 'gold', icon: 'assets/icons/seed_corn.svg', yieldItem: { name: 'Hạt giống bắp ngọt', cat: 'Vật Phẩm', count: 5, icon: 'assets/icons/seed_corn.svg', plantable: true, seedType: 'corn' } },
+                { name: 'Bình Máu Đại', price: 800, currency: 'gold', icon: 'assets/v21/items/potion.png', yieldItem: { name: 'Bình Máu Siêu Cấp', cat: 'Vật Phẩm', count: 5, icon: 'assets/v21/items/potion.png', heal: 1500 } }
             ],
             'Trang Bị': [
-                { name: 'Nón Lá Sắt', price: 20000, currency: 'gold', icon: '👒', yieldItem: { name: 'Nón Lá Sắt Bền', cat: 'Trang Bị', count: 1, icon: '👒', def: 200 } },
-                { name: 'Cuốc Rèn Thép', price: 35000, currency: 'gold', icon: '⛏️', yieldItem: { name: 'Cuốc Thép Tinh Luyện', cat: 'Trang Bị', count: 1, icon: '⛏️', atk: 450 } }
+                { name: 'Nón Lá Thần Nông', price: 20000, currency: 'gold', icon: 'assets/icons/hat_nonla.svg', yieldItem: { name: 'Nón Lá Thần Nông', cat: 'Trang Bị', count: 1, icon: 'assets/icons/hat_nonla.svg', def: 200 } },
+                { name: 'Cuốc Thép Tinh Luyện', price: 35000, currency: 'gold', icon: 'assets/v21/items/hoe.png', yieldItem: { name: 'Cuốc Thép Tinh Luyện', cat: 'Trang Bị', count: 1, icon: 'assets/v21/items/hoe.png', atk: 450 } }
             ],
             'Ngọc': [
-                { name: 'Hồng Ngọc Hỏa', price: 50, currency: 'diamond', icon: '💎', yieldItem: { name: 'Hồng ngọc thần bí', cat: 'Ngọc', count: 2, icon: '💎' } },
-                { name: 'Đá Cường Hóa', price: 30, currency: 'diamond', icon: '💠', yieldItem: { name: 'Đá nâng cấp xanh', cat: 'Ngọc', count: 10, icon: '💠' } }
+                { name: 'Hồng Ngọc Hỏa', price: 50, currency: 'diamond', icon: 'assets/icons/gem_ruby.svg', yieldItem: { name: 'Hồng ngọc thần bí', cat: 'Ngọc', count: 2, icon: 'assets/icons/gem_ruby.svg' } },
+                { name: 'Đá Cường Hóa', price: 30, currency: 'diamond', icon: 'assets/icons/gem_stone.svg', yieldItem: { name: 'Đá nâng cấp xanh', cat: 'Ngọc', count: 10, icon: 'assets/icons/gem_stone.svg' } }
             ]
         };
 
@@ -884,11 +897,11 @@ export class UIManager {
             const card = document.createElement('div');
             card.className = 'shop-item-card';
             card.innerHTML = `
-                <div class="shop-item-icon">${item.icon}</div>
+                <div class="shop-item-icon">${this.renderIconHtml(item.icon, 'shop-item-icon-img')}</div>
                 <div class="shop-item-title">${item.name}</div>
                 <div class="shop-item-desc">${item.desc || ''}</div>
                 <button class="btn-shop-buy">
-                    ${item.currency === 'diamond' ? '💎' : '🪙'} ${item.price.toLocaleString()}
+                    ${item.currency === 'diamond' ? '<img src="assets/icons/gem_ruby.svg" class="currency-tiny-icon" alt="dia">' : '<img src="assets/v21/items/rice.png" class="currency-tiny-icon" alt="gold">'} ${item.price.toLocaleString()}
                 </button>
             `;
 
