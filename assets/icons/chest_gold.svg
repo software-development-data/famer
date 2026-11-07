@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="chestWood" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+    <linearGradient id="goldTrim" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#eab308"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+  </defs>
+  <!-- Chest Body -->
+  <rect x="18" y="46" width="64" height="40" rx="4" fill="url(#chestWood)" stroke="#451a03" stroke-width="3"/>
+  <!-- Gold Bands on Body -->
+  <rect x="24" y="46" width="8" height="40" fill="url(#goldTrim)"/>
+  <rect x="68" y="46" width="8" height="40" fill="url(#goldTrim)"/>
+  <rect x="18" y="80" width="64" height="6" fill="url(#goldTrim)"/>
+  <!-- Domed Chest Lid -->
+  <path d="M 16 46 C 16 26, 84 26, 84 46 Z" fill="url(#chestWood)" stroke="#451a03" stroke-width="3"/>
+  <!-- Gold Bands on Lid -->
+  <path d="M 24 46 C 24 30, 32 30, 32 46 Z" fill="url(#goldTrim)"/>
+  <path d="M 68 46 C 68 30, 76 30, 76 46 Z" fill="url(#goldTrim)"/>
+  <!-- Center Golden Latch & Ruby Keyhole -->
+  <rect x="44" y="42" width="12" height="16" rx="2" fill="url(#goldTrim)" stroke="#78350f" stroke-width="1.5"/>
+  <circle cx="50" cy="50" r="3" fill="#dc2626"/>
+  <!-- Glow Rays -->
+  <polygon points="50,14 52,22 56,22 53,26 54,30 50,27 46,30 47,26 44,22 48,22" fill="#fde047"/>
+</svg>

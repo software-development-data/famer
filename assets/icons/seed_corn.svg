@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="cornGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#facc15"/>
+      <stop offset="100%" stop-color="#eab308"/>
+    </linearGradient>
+    <linearGradient id="huskGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#86efac"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+  </defs>
+  <!-- Green Leaves Husk -->
+  <path d="M 28 85 Q 12 55 24 35 Q 36 60 44 85 Z" fill="url(#huskGreen)" stroke="#14532d" stroke-width="2"/>
+  <path d="M 72 85 Q 88 55 76 35 Q 64 60 56 85 Z" fill="url(#huskGreen)" stroke="#14532d" stroke-width="2"/>
+  <!-- Corn Cob -->
+  <ellipse cx="50" cy="50" rx="16" ry="32" fill="url(#cornGold)" stroke="#a16207" stroke-width="2.5"/>
+  <!-- Corn Kernels Grid Pattern -->
+  <line x1="42" y1="24" x2="42" y2="76" stroke="#ca8a04" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="50" y1="20" x2="50" y2="80" stroke="#ca8a04" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="58" y1="24" x2="58" y2="76" stroke="#ca8a04" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <!-- Silk Tufts -->
+  <path d="M 46 18 Q 50 8 58 10" fill="none" stroke="#d97706" stroke-width="2"/>
+  <path d="M 52 18 Q 58 6 64 12" fill="none" stroke="#d97706" stroke-width="2"/>
+</svg>

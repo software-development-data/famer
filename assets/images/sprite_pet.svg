@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <defs>
+    <radialGradient id="hamsterFur" cx="45%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="40%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </radialGradient>
+    <radialGradient id="bellyCream" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#fef3c7"/>
+    </radialGradient>
+    <linearGradient id="petHat" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+    <filter id="petShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Ground Shadow -->
+  <ellipse cx="80" cy="168" rx="45" ry="10" fill="#000000" opacity="0.3"/>
+
+  <g filter="url(#petShadow)">
+    <!-- Wooden Shovel on Back -->
+    <line x1="50" y1="130" x2="115" y2="30" stroke="#78350f" stroke-width="6" stroke-linecap="round"/>
+    <rect x="105" y="22" width="18" height="12" rx="2" fill="#94a3b8" stroke="#475569" stroke-width="1.5" transform="rotate(-30 114 28)"/>
+
+    <!-- Round Chubby Hamster Body -->
+    <ellipse cx="80" cy="115" rx="46" ry="48" fill="url(#hamsterFur)" stroke="#78350f" stroke-width="2.5"/>
+
+    <!-- White Cream Belly -->
+    <ellipse cx="80" cy="122" rx="32" ry="34" fill="url(#bellyCream)"/>
+
+    <!-- Round Ears -->
+    <ellipse cx="46" cy="74" rx="14" ry="16" fill="#f59e0b" stroke="#78350f" stroke-width="2"/>
+    <ellipse cx="46" cy="74" rx="8" ry="10" fill="#fca5a5"/>
+
+    <ellipse cx="114" cy="74" rx="14" ry="16" fill="#f59e0b" stroke="#78350f" stroke-width="2"/>
+    <ellipse cx="114" cy="74" rx="8" ry="10" fill="#fca5a5"/>
+
+    <!-- Tiny Feet -->
+    <ellipse cx="60" cy="158" rx="10" ry="7" fill="#fca5a5" stroke="#78350f" stroke-width="1.5"/>
+    <ellipse cx="100" cy="158" rx="10" ry="7" fill="#fca5a5" stroke="#78350f" stroke-width="1.5"/>
+
+    <!-- Tiny Paws resting on tummy -->
+    <ellipse cx="64" cy="116" rx="7" ry="9" fill="#fca5a5" stroke="#78350f" stroke-width="1.5" transform="rotate(20 64 116)"/>
+    <ellipse cx="96" cy="116" rx="7" ry="9" fill="#fca5a5" stroke="#78350f" stroke-width="1.5" transform="rotate(-20 96 116)"/>
+
+    <!-- Big Cute Hamster Eyes -->
+    <ellipse cx="62" cy="98" rx="6.5" ry="8.5" fill="#1c1917"/>
+    <circle cx="60" cy="95" r="3" fill="#ffffff"/>
+    <circle cx="64" cy="100" r="1.5" fill="#ffffff"/>
+
+    <ellipse cx="98" cy="98" rx="6.5" ry="8.5" fill="#1c1917"/>
+    <circle cx="96" cy="95" r="3" fill="#ffffff"/>
+    <circle cx="100" cy="100" r="1.5" fill="#ffffff"/>
+
+    <!-- Pink Hamster Nose & Mouth -->
+    <polygon points="80,105 76,101 84,101" fill="#f43f5e"/>
+    <path d="M 76 106 Q 80 110 80 106 Q 80 110 84 106" fill="none" stroke="#78350f" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Chubby Rosy Cheeks -->
+    <ellipse cx="50" cy="108" rx="8" ry="5" fill="#fb7185" opacity="0.6"/>
+    <ellipse cx="110" cy="108" rx="8" ry="5" fill="#fb7185" opacity="0.6"/>
+
+    <!-- Whiskers -->
+    <line x1="42" y1="105" x2="26" y2="102" stroke="#78350f" stroke-width="1.5"/>
+    <line x1="42" y1="110" x2="28" y2="114" stroke="#78350f" stroke-width="1.5"/>
+    <line x1="118" y1="105" x2="134" y2="102" stroke="#78350f" stroke-width="1.5"/>
+    <line x1="118" y1="110" x2="132" y2="114" stroke="#78350f" stroke-width="1.5"/>
+
+    <!-- Miniature Conical Straw Hat on Hamster's head -->
+    <polygon points="80,42 120,72 40,72" fill="url(#petHat)" stroke="#78350f" stroke-width="2.5"/>
+    <path d="M 40 72 Q 80 78 120 72" fill="#ca8a04" stroke="#78350f" stroke-width="1.5"/>
+  </g>
+</svg>

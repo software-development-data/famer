@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="boarHide" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#92400e"/>
+      <stop offset="70%" stop-color="#78350f"/>
+      <stop offset="100%" stop-color="#451a03"/>
+    </radialGradient>
+  </defs>
+  <!-- Ears -->
+  <polygon points="26,30 20,12 36,22" fill="#78350f" stroke="#451a03" stroke-width="2"/>
+  <polygon points="74,30 80,12 64,22" fill="#78350f" stroke="#451a03" stroke-width="2"/>
+  <!-- Head / Snout Body -->
+  <circle cx="50" cy="52" r="34" fill="url(#boarHide)" stroke="#451a03" stroke-width="3"/>
+  <!-- Mane Hair Spikes -->
+  <path d="M 40 20 L 44 8 L 50 18 L 56 6 L 60 20 Z" fill="#451a03"/>
+  <!-- Snout Disc -->
+  <ellipse cx="50" cy="62" rx="18" ry="13" fill="#fca5a5" stroke="#991b1b" stroke-width="2.5"/>
+  <!-- Nostrils -->
+  <circle cx="43" cy="62" r="3.5" fill="#7f1d1d"/>
+  <circle cx="57" cy="62" r="3.5" fill="#7f1d1d"/>
+  <!-- Fierce Eyes -->
+  <polygon points="32,40 44,45 34,48" fill="#ef4444"/>
+  <circle cx="36" cy="44" r="2" fill="#ffffff"/>
+  <polygon points="68,40 56,45 66,48" fill="#ef4444"/>
+  <circle cx="64" cy="44" r="2" fill="#ffffff"/>
+  <!-- Curved White Tusks -->
+  <path d="M 30 68 Q 24 50 32 46 Q 34 58 36 68 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <path d="M 70 68 Q 76 50 68 46 Q 66 58 64 68 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+</svg>

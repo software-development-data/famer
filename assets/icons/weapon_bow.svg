@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="bowWood" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+    <linearGradient id="greenGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#86efac"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+  </defs>
+  <!-- Bow Arc -->
+  <path d="M 30 15 Q 85 50 30 85" fill="none" stroke="url(#bowWood)" stroke-width="8" stroke-linecap="round"/>
+  <!-- Bow String -->
+  <line x1="30" y1="15" x2="30" y2="85" stroke="#cbd5e1" stroke-width="2.5" stroke-dasharray="100"/>
+  <!-- Arrow -->
+  <line x1="20" y1="50" x2="80" y2="50" stroke="#fde047" stroke-width="4" stroke-linecap="round"/>
+  <!-- Arrow Head -->
+  <polygon points="88,50 74,43 78,50 74,57" fill="url(#greenGlow)"/>
+  <!-- Fletching Feathers -->
+  <path d="M 16 43 L 26 50 L 16 57 Z" fill="#22c55e"/>
+</svg>

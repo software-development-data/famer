@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="sackGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#92400e"/>
+    </linearGradient>
+    <linearGradient id="riceGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#eab308"/>
+    </linearGradient>
+  </defs>
+  <!-- Burlap Pouch -->
+  <path d="M 28 42 C 20 50, 18 78, 30 88 C 45 94, 55 94, 70 88 C 82 78, 80 50, 72 42 Z" fill="url(#sackGrad)" stroke="#78350f" stroke-width="3"/>
+  <!-- Tied Neck -->
+  <ellipse cx="50" cy="40" rx="18" ry="6" fill="#ca8a04" stroke="#78350f" stroke-width="2"/>
+  <rect x="42" y="36" width="16" height="5" rx="2" fill="#ef4444"/>
+  <!-- Golden Rice Stalk emerging -->
+  <path d="M 50 38 Q 62 18 68 8" fill="none" stroke="#65a30d" stroke-width="3"/>
+  <!-- Grains of Rice -->
+  <ellipse cx="68" cy="10" rx="4" ry="7" fill="url(#riceGold)" stroke="#ca8a04" stroke-width="1" transform="rotate(30 68 10)"/>
+  <ellipse cx="62" cy="18" rx="4" ry="7" fill="url(#riceGold)" stroke="#ca8a04" stroke-width="1" transform="rotate(-25 62 18)"/>
+  <ellipse cx="56" cy="26" rx="4" ry="7" fill="url(#riceGold)" stroke="#ca8a04" stroke-width="1" transform="rotate(25 56 26)"/>
+  <ellipse cx="50" cy="33" rx="4" ry="7" fill="url(#riceGold)" stroke="#ca8a04" stroke-width="1" transform="rotate(-15 50 33)"/>
+</svg>

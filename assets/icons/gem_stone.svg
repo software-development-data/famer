@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="cyanStone" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a5f3fc"/>
+      <stop offset="50%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+  </defs>
+  <!-- Octagonal Enhancement Rune Stone -->
+  <polygon points="35,15 65,15 85,35 85,65 65,85 35,85 15,65 15,35" fill="url(#cyanStone)" stroke="#164e63" stroke-width="3"/>
+  <!-- Inner Sacred Hexagon -->
+  <polygon points="38,28 62,28 74,50 62,72 38,72 26,50" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.8"/>
+  <!-- Central Glowing Rune Symbol -->
+  <path d="M 50 36 L 50 64 M 38 50 L 62 50 M 42 42 L 58 58 M 42 58 L 58 42" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+</svg>

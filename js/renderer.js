@@ -12,6 +12,26 @@ export class Renderer {
         // Camera
         this.camera = { x: 0, y: 0 };
 
+        // Preloaded Graphic Assets
+        this.assets = {
+            farmer: new Image(),
+            disciple: new Image(),
+            pet: new Image(),
+            boar: new Image(),
+            crow: new Image(),
+            spider: new Image(),
+            bandit: new Image(),
+            trap: new Image()
+        };
+        this.assets.farmer.src = 'assets/images/sprite_farmer.svg';
+        this.assets.disciple.src = 'assets/images/sprite_disciple.svg';
+        this.assets.pet.src = 'assets/images/sprite_pet.svg';
+        this.assets.boar.src = 'assets/icons/monster_boar.svg';
+        this.assets.crow.src = 'assets/icons/monster_crow.svg';
+        this.assets.spider.src = 'assets/icons/monster_spider.svg';
+        this.assets.bandit.src = 'assets/icons/monster_bandit.svg';
+        this.assets.trap.src = 'assets/icons/trap_bear.svg';
+
         this.initCanvasSize();
         window.addEventListener('resize', () => this.initCanvasSize());
     }
@@ -412,45 +432,61 @@ export class Renderer {
         // Bobbing walk cycle
         const bob = player.isMoving ? Math.sin(player.animTimer * 25) * 3 : 0;
 
-        // Legs / Pants
-        ctx.fillStyle = '#475569';
-        ctx.fillRect(-10, 10 + bob, 8, 14 - bob);
-        ctx.fillRect(2, 10 - bob, 8, 14 + bob);
+        if (this.assets.farmer.complete && this.assets.farmer.naturalWidth > 0) {
+            ctx.drawImage(this.assets.farmer, -30, -56 + bob, 60, 76);
+        } else {
+            // Legs / Pants
+            ctx.fillStyle = '#475569';
+            ctx.fillRect(-10, 10 + bob, 8, 14 - bob);
+            ctx.fillRect(2, 10 - bob, 8, 14 + bob);
 
-        // Body / Peasant Tunic (Brown/Ivory)
-        ctx.fillStyle = '#f8fafc';
-        ctx.fillRect(-12, -8 + bob, 24, 20);
-        ctx.fillStyle = '#854d0e';
-        ctx.fillRect(-12, 4 + bob, 24, 6); // Fabric sash belt
+            // Body / Peasant Tunic (Brown/Ivory)
+            ctx.fillStyle = '#f8fafc';
+            ctx.fillRect(-12, -8 + bob, 24, 20);
+            ctx.fillStyle = '#854d0e';
+            ctx.fillRect(-12, 4 + bob, 24, 6); // Fabric sash belt
 
-        // Head
-        ctx.beginPath();
-        ctx.arc(0, -18 + bob, 13, 0, Math.PI * 2);
-        ctx.fillStyle = '#fed7aa'; // Skin tone
-        ctx.fill();
+            // Head
+            ctx.beginPath();
+            ctx.arc(0, -18 + bob, 13, 0, Math.PI * 2);
+            ctx.fillStyle = '#fed7aa'; // Skin tone
+            ctx.fill();
 
-        // Face (Chibi eyes)
-        ctx.fillStyle = '#0f172a';
-        ctx.beginPath();
-        ctx.arc(4, -18 + bob, 2.5, 0, Math.PI * 2);
-        ctx.fill();
-        // Blush
-        ctx.fillStyle = '#fb7185';
-        ctx.beginPath();
-        ctx.arc(5, -14 + bob, 3, 0, Math.PI * 2);
-        ctx.fill();
+            // Face (Chibi eyes)
+            ctx.fillStyle = '#0f172a';
+            ctx.beginPath();
+            ctx.arc(4, -18 + bob, 2.5, 0, Math.PI * 2);
+            ctx.fill();
+            // Blush
+            ctx.fillStyle = '#fb7185';
+            ctx.beginPath();
+            ctx.arc(5, -14 + bob, 3, 0, Math.PI * 2);
+            ctx.fill();
 
-        // Conical Straw Hat ("Nón Lá")
-        ctx.beginPath();
-        ctx.moveTo(-24, -22 + bob);
-        ctx.lineTo(0, -42 + bob);
-        ctx.lineTo(24, -22 + bob);
-        ctx.closePath();
-        ctx.fillStyle = '#fde047';
-        ctx.fill();
-        ctx.strokeStyle = '#ca8a04';
-        ctx.lineWidth = 2.5;
-        ctx.stroke();
+            // Conical Straw Hat ("Nón Lá")
+            ctx.beginPath();
+            ctx.moveTo(-24, -22 + bob);
+            ctx.lineTo(0, -42 + bob);
+            ctx.lineTo(24, -22 + bob);
+            ctx.closePath();
+            ctx.fillStyle = '#fde047';
+            ctx.fill();
+            ctx.strokeStyle = '#ca8a04';
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
+
+            // Resting hoe over shoulder
+            if (player.state !== 'attack' && player.state !== 'shoot') {
+                ctx.strokeStyle = '#78350f';
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.moveTo(-10, 0 + bob);
+                ctx.lineTo(18, -25 + bob);
+                ctx.stroke();
+                ctx.fillStyle = '#94a3b8';
+                ctx.fillRect(16, -30 + bob, 12, 16);
+            }
+        }
 
         // Weapon / Tool (Hoe or Bow or Slash Wave)
         if (player.state === 'attack') {
@@ -465,17 +501,6 @@ export class Renderer {
         } else if (player.state === 'shoot') {
             ctx.font = '24px serif';
             ctx.fillText('🏹', 12, 4);
-        } else {
-            // Resting hoe over shoulder
-            ctx.strokeStyle = '#78350f';
-            ctx.lineWidth = 4;
-            ctx.beginPath();
-            ctx.moveTo(-10, 0 + bob);
-            ctx.lineTo(18, -25 + bob);
-            ctx.stroke();
-            // Blade
-            ctx.fillStyle = '#94a3b8';
-            ctx.fillRect(16, -30 + bob, 12, 16);
         }
 
         ctx.restore();
@@ -505,33 +530,37 @@ export class Renderer {
         ctx.translate(dx, dy);
         if (disciple.direction === -1) ctx.scale(-1, 1);
 
-        // Martial Dress (Red / White Hanfu)
-        ctx.fillStyle = '#e11d48';
-        ctx.fillRect(-10, 2, 20, 18);
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(-8, -4, 16, 8);
+        if (this.assets.disciple.complete && this.assets.disciple.naturalWidth > 0) {
+            ctx.drawImage(this.assets.disciple, -28, -50, 56, 70);
+        } else {
+            // Martial Dress (Red / White Hanfu)
+            ctx.fillStyle = '#e11d48';
+            ctx.fillRect(-10, 2, 20, 18);
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(-8, -4, 16, 8);
 
-        // Chibi Girl Head
-        ctx.beginPath();
-        ctx.arc(0, -14, 12, 0, Math.PI * 2);
-        ctx.fillStyle = '#ffe4e6';
-        ctx.fill();
+            // Chibi Girl Head
+            ctx.beginPath();
+            ctx.arc(0, -14, 12, 0, Math.PI * 2);
+            ctx.fillStyle = '#ffe4e6';
+            ctx.fill();
 
-        // Twin Hair Buns with Red Ribbons
-        ctx.fillStyle = '#1c1917';
-        ctx.beginPath();
-        ctx.arc(-11, -22, 6, 0, Math.PI * 2);
-        ctx.arc(11, -22, 6, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = '#f43f5e';
-        ctx.fillRect(-13, -24, 4, 10);
-        ctx.fillRect(9, -24, 4, 10);
+            // Twin Hair Buns with Red Ribbons
+            ctx.fillStyle = '#1c1917';
+            ctx.beginPath();
+            ctx.arc(-11, -22, 6, 0, Math.PI * 2);
+            ctx.arc(11, -22, 6, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#f43f5e';
+            ctx.fillRect(-13, -24, 4, 10);
+            ctx.fillRect(9, -24, 4, 10);
 
-        // Cute Face
-        ctx.fillStyle = '#0f172a';
-        ctx.beginPath();
-        ctx.arc(3, -13, 2, 0, Math.PI * 2);
-        ctx.fill();
+            // Cute Face
+            ctx.fillStyle = '#0f172a';
+            ctx.beginPath();
+            ctx.arc(3, -13, 2, 0, Math.PI * 2);
+            ctx.fill();
+        }
 
         // Attack Aura wave
         if (disciple.state === 'attack') {
@@ -569,39 +598,43 @@ export class Renderer {
         ctx.translate(px, py);
         if (pet.direction === -1) ctx.scale(-1, 1);
 
-        // Cute Hamster Body (Orange / Cream)
-        ctx.beginPath();
-        ctx.arc(0, 0, 13, 0, Math.PI * 2);
-        ctx.fillStyle = '#f59e0b';
-        ctx.fill();
+        if (this.assets.pet.complete && this.assets.pet.naturalWidth > 0) {
+            ctx.drawImage(this.assets.pet, -22, -26, 44, 48);
+        } else {
+            // Cute Hamster Body (Orange / Cream)
+            ctx.beginPath();
+            ctx.arc(0, 0, 13, 0, Math.PI * 2);
+            ctx.fillStyle = '#f59e0b';
+            ctx.fill();
 
-        ctx.beginPath();
-        ctx.arc(2, 2, 8, 0, Math.PI * 2);
-        ctx.fillStyle = '#fef3c7';
-        ctx.fill();
+            ctx.beginPath();
+            ctx.arc(2, 2, 8, 0, Math.PI * 2);
+            ctx.fillStyle = '#fef3c7';
+            ctx.fill();
 
-        // Eyes & Nose
-        ctx.fillStyle = '#1c1917';
-        ctx.beginPath();
-        ctx.arc(5, -2, 2, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = '#fb7185';
-        ctx.beginPath();
-        ctx.arc(8, 0, 2, 0, Math.PI * 2);
-        ctx.fill();
+            // Eyes & Nose
+            ctx.fillStyle = '#1c1917';
+            ctx.beginPath();
+            ctx.arc(5, -2, 2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#fb7185';
+            ctx.beginPath();
+            ctx.arc(8, 0, 2, 0, Math.PI * 2);
+            ctx.fill();
 
-        // Tiny Straw Hat on Hamster
-        ctx.beginPath();
-        ctx.moveTo(-10, -10);
-        ctx.lineTo(0, -20);
-        ctx.lineTo(10, -10);
-        ctx.closePath();
-        ctx.fillStyle = '#facc15';
-        ctx.fill();
+            // Tiny Straw Hat on Hamster
+            ctx.beginPath();
+            ctx.moveTo(-10, -10);
+            ctx.lineTo(0, -20);
+            ctx.lineTo(10, -10);
+            ctx.closePath();
+            ctx.fillStyle = '#facc15';
+            ctx.fill();
 
-        // Mini wooden shovel on back
-        ctx.fillStyle = '#78350f';
-        ctx.fillRect(-12, -4, 4, 14);
+            // Mini wooden shovel on back
+            ctx.fillStyle = '#78350f';
+            ctx.fillRect(-12, -4, 4, 14);
+        }
 
         ctx.restore();
 
@@ -634,15 +667,25 @@ export class Renderer {
         if (enemy.direction === -1) ctx.scale(-1, 1);
 
         // Enemy Icon / Sprite Representation
-        ctx.font = '36px serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(enemy.icon, 0, 0);
+        let enemyImg = null;
+        if (enemy.type === 'heorung') enemyImg = this.assets.boar;
+        else if (enemy.type === 'quaden') enemyImg = this.assets.crow;
+        else if (enemy.type === 'nhen') enemyImg = this.assets.spider;
+        else if (enemy.type === 'thophi') enemyImg = this.assets.bandit;
+
+        if (enemyImg && enemyImg.complete && enemyImg.naturalWidth > 0) {
+            ctx.drawImage(enemyImg, -26, -26, 52, 52);
+        } else {
+            ctx.font = '36px serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(enemy.icon, 0, 0);
+        }
 
         if (isFlinching) {
             ctx.fillStyle = 'rgba(239, 68, 68, 0.6)';
             ctx.beginPath();
-            ctx.arc(0, 0, 22, 0, Math.PI * 2);
+            ctx.arc(0, 0, 26, 0, Math.PI * 2);
             ctx.fill();
         }
 
@@ -671,9 +714,17 @@ export class Renderer {
     drawTraps(ctx, traps) {
         ctx.save();
         traps.forEach(t => {
-            ctx.font = '26px serif';
-            ctx.textAlign = 'center';
-            ctx.fillText(t.triggered ? '💥' : '🪤', t.x, t.y);
+            if (t.triggered) {
+                ctx.font = '28px serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('💥', t.x, t.y);
+            } else if (this.assets.trap.complete && this.assets.trap.naturalWidth > 0) {
+                ctx.drawImage(this.assets.trap, t.x - 18, t.y - 18, 36, 36);
+            } else {
+                ctx.font = '26px serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('🪤', t.x, t.y);
+            }
         });
         ctx.restore();
     }
